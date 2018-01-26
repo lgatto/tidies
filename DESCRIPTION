@@ -1,0 +1,13 @@
+Package: tidyms
+Title: A Grammar of Data Manipulation for the MSnbase package
+Version: 0.0.1
+Authors@R: person("Laurent", "Gatto",
+                  email = "lg390@cam.ac.uk",
+                  role = c("aut", "cre"))
+Description: Implementing the dplyr grammar of data manipulation for
+             MSnbase data structures.
+Depends: R (>= 3.5.0), MSnbase, dplyr
+License: Artistic-2.0
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
