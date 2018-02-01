@@ -5,3 +5,4 @@ select.MSnSet <- function(.data, ...) {
     fData(.data) <- fData(.data)[, colnames(res)]
     .data
 }
+
