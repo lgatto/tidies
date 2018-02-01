@@ -1,20 +1,20 @@
-## only features
-filter.MSnSet <- function(.data, ...) {
-    tbl <- as_tibble(fData(.data))
-    tbl$.__featureNames__ <- featureNames(.data)
-    res <- filter(tbl, ...)
-    sel <- featureNames(.data) %in% res$.__featureNames__ 
-    .data[sel, ]
-}
+## ## only features
+## filter.MSnSet <- function(.data, ...) {
+##     tbl <- as_tibble(fData(.data))
+##     tbl$.__featureNames__ <- featureNames(.data)
+##     res <- filter(tbl, ...)
+##     sel <- featureNames(.data) %in% res$.__featureNames__ 
+##     .data[sel, ]
+## }
 
-## only samples
-filter.MSnSet <- function(.data, ...) {
-    tbl <- as_tibble(pData(.data))
-    tbl$.__sampleNames__ <- sampleNames(.data)
-    res <- filter(tbl, ...)
-    sel <- sampleNames(.data) %in% res$.__samplesNames__ 
-    .data[, sel]
-}
+## ## only samples
+## filter.MSnSet <- function(.data, ...) {
+##     tbl <- as_tibble(pData(.data))
+##     tbl$.__sampleNames__ <- sampleNames(.data)
+##     res <- filter(tbl, ...)
+##     sel <- sampleNames(.data) %in% res$.__samplesNames__ 
+##     .data[, sel]
+## }
 
 ## both, but not together
 filter.MSnSet <- function(.data, ...) {

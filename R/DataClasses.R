@@ -1,18 +1,29 @@
-.GroupedMSnSet <- setClass("GroupedMSnSet",
-         slots = c(vars = "character",
-                   drop = "logical",
-                   indices = "list",
-                   group_sizes = "integer",
-                   biggest_group_size = "integer",
-                   labels = "data.frame"),
-         contains = c("MSnSet", "grouped_df"))
+.GroupedMSnSet <-
+    setClass("GroupedMSnSet",
+             slots = c(
+                 fvars = "character",
+                 fdrop = "logical",
+                 findices = "list",
+                 fgroup_sizes = "integer",
+                 fbiggest_group_size = "integer",
+                 flabels = "data.frame",
+                 pvars = "character",
+                 pdrop = "logical",
+                 pindices = "list",
+                 pgroup_sizes = "integer",
+                 pbiggest_group_size = "integer",
+                 plabels = "data.frame"),
+             contains = c("MSnSet", "grouped_df"))
 
 setMethod("show", "GroupedMSnSet",
           function(object) {
-              grps <- if (is.null(object@indices)) "?" else length(object@indices)
-              ## cat("Object of class 'GroupedMSnSet'\n")
-              cat("Groups: ", object@vars, "[", grps, "]\n")
               callNextMethod()
+              fgrps <- if (is.null(object@findices)) "?" else length(object@findices)
+              pgrps <- if (is.null(object@pindices)) "?" else length(object@pindices)
+              ## cat("Object of class 'GroupedMSnSet'\n")
+              cat("Groups:\n")
+              cat("  features ", object@fvars, "[", fgrps, "]\n")
+              cat("  samples  ", object@pvars, "[", pgrps, "]\n")
           })
 
 setAs("MSnSet", "GroupedMSnSet",
