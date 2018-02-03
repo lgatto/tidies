@@ -1,8 +1,27 @@
-## select feature variables
+
+##' @export
+##' @examples
+##' data(msnset)
+##' msnset$group <- c("A", "A", "B", "B")
+##' msnset %>%
+##'     select(group) %>%
+##'     pData
+##'
+##' msnset %>%
+##'     select(starts_with("Protein")) %>%
+##'     fvarLabels
+##'
+##' msnset %>%
+##'     select(group) %>%
+##'     select(starts_with("Prot"))
 select.MSnSet <- function(.data, ...) {
-    tbl <- as_tibble(fData(.data))
-    res <- select(tbl, ...)
-    fData(.data) <- fData(.data)[, colnames(res)]
+    ftbl <- try(select(fData(.data), ...), silent = TRUE)
+    ptbl <- try(select(pData(.data), ...), silent = TRUE)
+    if (!inherits(ftbl, "try-error")) {    
+        fData(.data) <- ftbl
+    } else if (!inherits(ptbl, "try-error")) {
+        pData(.data) <- ptbl
+    }
     .data
 }
 

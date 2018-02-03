@@ -15,6 +15,7 @@
                  plabels = "data.frame"),
              contains = c("MSnSet", "grouped_df"))
 
+##' @export
 setMethod("show", "GroupedMSnSet",
           function(object) {
               callNextMethod()
@@ -26,6 +27,7 @@ setMethod("show", "GroupedMSnSet",
               cat("  samples  ", object@pvars, "[", pgrps, "]\n")
           })
 
+##' @export
 setAs("MSnSet", "GroupedMSnSet",
       function(from) 
           .GroupedMSnSet(
