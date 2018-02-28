@@ -5,7 +5,7 @@ the [tidyverse](https://www.tidyverse.org/) packages to omics-type
 data classes, with (currently at least), an emphasis on quantitative
 proteomics data.
 
-Details and examples are provides in the vignette.
+Details and examples are provides in the [vignette](https://lgatto.github.io/tidyms/articles/tidyms.html).
 
 ## Installation
 
