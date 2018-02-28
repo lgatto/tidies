@@ -1,3 +1,5 @@
+setOldClass("grouped_df")
+
 .GroupedMSnSet <-
     setClass("GroupedMSnSet",
              slots = c(
@@ -29,7 +31,7 @@ setMethod("show", "GroupedMSnSet",
 
 ##' @export
 setAs("MSnSet", "GroupedMSnSet",
-      function(from) 
+      function(from)
           .GroupedMSnSet(
               experimentData = from@experimentData,
               processingData = from@processingData,

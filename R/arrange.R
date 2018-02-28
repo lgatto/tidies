@@ -1,19 +1,9 @@
 ##' @export
-##' @examples
-##'
-##' data(msnset)
-##' msnset$group <- c("A", "A", "B", "B")
-##' msnset %>%
-##'     arrange(desc(group)) %>%
-##'     pData
-##' 
-##' msnset %>%
-##'     select(charge) %>%
-##'     fData %>% head
-##' msnset %>%
-##'     arrange(charge) %>%
-##'     select(charge) %>%
-##'     fData %>% head
+##' @rdname tidyms
+##' @param .data An object of class [MSnbase::MSnSet].
+##' @param ...  Expressions evaluated in the context of the object's
+##'     feature and sample variable and passed to the `dplyr`
+##'     functions.
 arrange.MSnSet <- function(.data, ...) {
     fd <- fData(.data)
     fd$.__featureNames__ <- featureNames(.data)

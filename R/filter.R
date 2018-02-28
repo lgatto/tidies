@@ -1,27 +1,9 @@
 ##' @export
-##' @examples
-##' data(msnset)
-##' msnset$group <- c("A", "A", "B", "B")
-##' ## filter on feature variables
-##' msnset %>%
-##'     filter(ProteinAccession == "ENO") %>%
-##'     exprs
-##'
-##' ## filter on pheno variable
-##' msnset %>%
-##'     filter(group == "A") %>%
-##'     exprs %>%
-##'     head
-##'
-##' ## filter on both
-##' msnset %>%
-##'     filter(group == "A") %>%
-##'     filter(ProteinAccession == "ENO") %>%
-##'     exprs 
+##' @rdname tidyms
 filter.MSnSet <- function(.data, ...) {
-    ftbl <- fData(msnset)
+    ftbl <- fData(.data)
     ftbl$.__featureNames__ <- featureNames(.data)
-    ptbl <- pData(msnset)
+    ptbl <- pData(.data)
     ptbl$.__sampleNames__ <- sampleNames(.data)
     fres <- try(filter(ftbl, ...), silent = TRUE)
     pres <- try(filter(ptbl, ...), silent = TRUE)
@@ -31,4 +13,3 @@ filter.MSnSet <- function(.data, ...) {
     else psel <- sampleNames(.data) %in% pres$.__sampleNames__
     .data[fsel, psel]
 }
-

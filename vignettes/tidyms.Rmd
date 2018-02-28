@@ -1,0 +1,145 @@
+---
+title: "A Grammar of Data Manipulation for Quantitative Proteomics"
+author: Laurent Gatto
+package: tidyms
+output:
+  BiocStyle::html_document:
+   toc_float: true
+vignette: >
+  %\VignetteIndexEntry{tidyms}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteKeyword{proteomics, data science, tidyverse}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r env, echo=FALSE, message=FALSE}
+suppressPackageStartupMessages(library("tidyms"))
+suppressPackageStartupMessages(library("BiocStyle"))
+```
+
+# Introduction
+
+The `tidyms` package implements tidy principles as defined in
+the [tidyverse](https://www.tidyverse.org/) packages to omics-type
+data classes, with (currently at least), an emphasis on quantitative
+proteomics data.
+
+```{r loadpackage}
+library("tidyms")
+```
+
+# Examples
+
+For all examples, we'll make use of the `msnset` object that comes
+ with the MSnbase package.
+
+
+```{r msnset}
+library("MSnbase")
+data(msnset)
+
+## Some test sample groups
+msnset$group <- c("A", "A", "B", "B")
+```
+
+## Order data by it feature of sample variables
+
+```{r arrange}
+## Arrange columns/samples
+msnset %>%
+	arrange(desc(group)) %>%
+	pData
+
+## All feature variables
+fvarLabels(msnset)
+
+## Select a feature variable
+msnset %>%
+	select(charge) %>%
+	fvarLabels
+
+## Arrange rows/features and select feature variables
+msnset %>%
+	arrange(charge) %>%
+	select(charge) %>%
+	fData %>% head
+```
+
+## Return features and samples with matching conditions
+
+```{r filter}
+## Filter using feature variables
+msnset %>%
+	filter(ProteinAccession == "ENO") %>%
+	exprs
+
+## Filter using phenotypic (samples) variables
+msnset %>%
+	filter(group == "A") %>%
+	exprs %>%
+	head
+
+## Filter on both feature and sample variables
+msnset %>%
+	filter(group == "A") %>%
+	filter(ProteinAccession == "ENO") %>%
+	exprs
+```
+
+## Group by one or more feature or sample variables
+
+```{r groupby}
+## Group by features
+msnset %>%
+	group_by(ProteinAccession)
+
+## Group by samples
+msnset %>%
+	group_by(group)
+
+## Group by features and samples
+msnset %>%
+	group_by(ProteinAccession) %>%
+	group_by(group)
+```
+## Select feature or sample variables
+
+```{r select}
+## Select sample variables (updates only the phenotypic data)
+msnset %>%
+	select(group) %>%
+	pData
+
+## Select feature variables (updates only the feature data)
+msnset %>%
+	select(starts_with("Protein")) %>%
+	fvarLabels
+
+## Select sample and feature variables
+msnset %>%
+	select(group) %>%
+	select(starts_with("Prot"))
+```
+
+## Summarise the expression values of a dataset
+
+```{r summarise}
+## Grouping and summarising by features
+msnset %>% group_by(charge) %>%
+	summarise(median(exprs, na.rm = TRUE)) %>% exprs
+
+msnset %>% group_by(ProteinAccession) %>%
+	summarise(median(exprs, na.rm = TRUE)) %>% exprs
+
+## Grouping and summarising by samples
+msnset %>% group_by(group) %>%
+	summarise(mean(exprs, na.rm = TRUE)) %>% exprs %>% head
+
+## Grouping by features and samples
+msnset %>%
+   group_by(charge) %>%
+   summarise(mean(exprs)) %>%
+   group_by(group) %>%
+   summarise(max(exprs, na.rm = TRUE)) %>%
+   exprs
+```
