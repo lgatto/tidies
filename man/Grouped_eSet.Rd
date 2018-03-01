@@ -13,12 +13,13 @@
 \item{object}{An `Grouped_eSet` instance.}
 }
 \description{
-This object extends the \link[MSnbase:MSnSet]{MSnbase::MSnSet} class by
-adding slots necessary to record the grouping structure. These
-additional slots are inherited from the \link[dplyr:grouped_df]{dplyr::grouped_df}
-class.\preformatted{Objects of class `Grouped_eSet` are created by the `group_by`
-function. See the vignette for examples.
+This object extends the \link[MSnbase:MSnSet]{MSnbase::MSnSet} class by adding slots
+necessary to record the grouping structure. These additional slots
+are inherited from the \link[dplyr:grouped_df]{dplyr::grouped_df} class.
 }
+\details{
+Objects of class \code{Grouped_eSet} are created by the \code{group_by}
+function. See the vignette for examples.
 }
 \section{Slots}{
 

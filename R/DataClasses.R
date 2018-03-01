@@ -6,15 +6,14 @@ setOldClass("grouped_df")
 ## require some additional plumbing (see for example below).
 
 
-##' @title A eSet/MSnSet object with grouped sample or feature variables
+##' A eSet/MSnSet object with grouped sample or feature variables
 ##'
-##' @description This object extends the [MSnbase::MSnSet] class by
-##'     adding slots necessary to record the grouping structure. These
-##'     additional slots are inherited from the [dplyr::grouped_df]
-##'     class.
+##' This object extends the [MSnbase::MSnSet] class by adding slots
+##' necessary to record the grouping structure. These additional slots
+##' are inherited from the [dplyr::grouped_df] class.
 ##'
-##'     Objects of class `Grouped_eSet` are created by the `group_by`
-##'     function. See the vignette for examples.
+##' Objects of class `Grouped_eSet` are created by the `group_by`
+##' function. See the vignette for examples.
 ##'
 ##' @slot fvars a `character` vector or a `list` of grouping feature
 ##'     variables.
