@@ -1,12 +1,12 @@
 ##' @export
-##' @rdname tidyms
+##' @rdname tidies
 ##' @param add As in the original `dplyr::group_by`function, when ‘add
 ##'     = FALSE’, the default, `group_by()` will override existing
 ##'     groups. To add to the existing groups, use `add = TRUE`.
-group_by.MSnSet <- function(.data, ..., add = FALSE) {
+group_by.eSet <- function(.data, ..., add = FALSE) {
     fres <- try(group_by(fData(.data), ..., add = add), silent = TRUE)
     pres <- try(group_by(pData(.data), ..., add = add), silent = TRUE)
-    ans <- as(.data, "GroupedMSnSet")
+    ans <- as(.data, "Grouped_eSet")
     if (!inherits(fres, "try-error")) {
         ans@fvars <- attr(fres, "vars")
         ans@fdrop <- attr(fres, "drop")

@@ -1,6 +1,6 @@
 ##' @export
-##' @rdname tidyms
-filter.MSnSet <- function(.data, ...) {
+##' @rdname tidies
+filter.eSet <- function(.data, ...) {
     ftbl <- fData(.data)
     ftbl$.__featureNames__ <- featureNames(.data)
     ptbl <- pData(.data)

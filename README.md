@@ -1,11 +1,11 @@
-# A Grammar of Data Manipulation for Quantitative Proteomics
+# A Grammar of Data Manipulation for Omics Data
 
-The `tidyms` package implements tidy principles as defined in
+The `tidies` package implements tidy principles as defined in
 the [tidyverse](https://www.tidyverse.org/) packages to omics-type
 data classes, with (currently at least), an emphasis on quantitative
 proteomics data.
 
-Details and examples are provides in the [vignette](https://lgatto.github.io/tidyms/articles/tidyms.html).
+Details and examples are provides in the [vignette](https://lgatto.github.io/tidies/articles/tidies.html).
 
 ## Installation
 
@@ -30,26 +30,26 @@ In case it isn't installed yet, please install `dplyr` and `tidyr`:
 install.packages(c("dplyr", "tidyr"))
 ```
 
-You can now install the `tidyms` package from github with:
+You can now install the `tidies` package from github with:
 
 ```r
-biocLite("lgatto/tidyms")
+biocLite("lgatto/tidies")
 ```
 
 ## Questions
 
 Please ask question, report bugs and suggest improvememt by opening a
-GitHub [issue](https://github.com/lgatto/tidyms/issues).
+GitHub [issue](https://github.com/lgatto/tidies/issues).
 
 ## Contributing
 
 Contributions to the package are more than welcome. If you want to
 contribute to this package, you should follow the same conventions as
 the rest of the functions. Please do get in touch (preferable opening
-a [github issue](https://github.com/lgatto/tidyms/issues/)) to discuss
+a [github issue](https://github.com/lgatto/tidies/issues/)) to discuss
 any suggestions.
 
 Please note that this project is released with
 a
-[Contributor Code of Conduct](https://github.com/lgatto/tidyms/blob/master/CONDUCT.md). By
+[Contributor Code of Conduct](https://github.com/lgatto/tidies/blob/master/CONDUCT.md). By
 participating in this project you agree to abide by its terms.

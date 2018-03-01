@@ -1,5 +1,5 @@
-summarise_fData_GroupedMSnSet <- function(.data, ...) {
-    df <- ms2df(.data, fcols = .data@fvars)
+summarise_fData_Grouped_eSet <- function(.data, ...) {
+    df <- ms2df_Grouped_eSet(.data, fcols = .data@fvars)
     res <- df %>% tidyr::gather(sample,
                                 exprs,
                                 -!!.data@fvars)
@@ -15,8 +15,8 @@ summarise_fData_GroupedMSnSet <- function(.data, ...) {
     ans
 }
 
-summarise_pData_GroupedMSnSet <- function(.data, ...) {
-    df <- ms2df(t(.data), fcols = .data@pvars)
+summarise_pData_Grouped_eSet <- function(.data, ...) {
+    df <- ms2df_Grouped_eSet(t(.data), fcols = .data@pvars)
     ## If the feature names were number (which is the case if the data
     ## was already grouped by features), then they are prefixed with
     ## an `X` in df, which then leads to an error when adding the
@@ -36,12 +36,12 @@ summarise_pData_GroupedMSnSet <- function(.data, ...) {
 }
 
 ##' @export
-##' @rdname tidyms
+##' @rdname tidies
 ##' @importFrom tidyr gather spread
-summarise.GroupedMSnSet <- function(.data, ...) {
+summarise.Grouped_eSet <- function(.data, ...) {
     if (length(.data@fvars))
-        summarise_fData_GroupedMSnSet(.data, ...)
+        summarise_fData_Grouped_eSet(.data, ...)
     else if (length(.data@pvars))
-        summarise_pData_GroupedMSnSet(.data, ...)
+        summarise_pData_Grouped_eSet(.data, ...)
     else .data
 }

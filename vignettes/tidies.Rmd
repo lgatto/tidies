@@ -1,30 +1,31 @@
 ---
-title: "A Grammar of Data Manipulation for Omics Assays"
+title: "A Grammar of Data Manipulation for Omics Experiments"
 author: Laurent Gatto
-package: tidyms
+package: tidies
 output:
   BiocStyle::html_document:
    toc_float: true
 vignette: >
-  %\VignetteIndexEntry{tidyms}
+  %\VignetteIndexEntry{tidyies}
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteKeyword{proteomics, data science, tidyverse}
+  %\VignetteKeyword{omics, proteomics, transcriptomics, data science, tidyverse}
   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r env, echo=FALSE, message=FALSE}
-suppressPackageStartupMessages(library("tidyms"))
+suppressPackageStartupMessages(library("tidies"))
 suppressPackageStartupMessages(library("BiocStyle"))
+suppressPackageStartupMessages(library("MSnbase"))
 ```
 
 # Introduction
-
-The `tidyms` package implements tidy principles as defined in
+The `tidies` package (from to contraction of *tidy* `eSet`) implements
+tidy principles as defined in
 the [tidyverse](https://www.tidyverse.org/) packages to omics-type
-data classes, with (currently at least), an emphasis on quantitative
-proteomics data.
+data based on the `eSet` class, with (currently at least), an emphasis
+on quantitative proteomics data.
 
-## The `MSnSet` class
+## High throughput data and the `eSet` class
 
 The motivation to store omics data in dedicated containers is to
 coordinate the high throughput data (e.g., gene or protein
@@ -50,7 +51,6 @@ is represented below. It's main features are
   rows match the expression data rows exactly.
 
 ![A typical omics data object](./msnset.png)
-
 
 The coordinated nature of the high throughput data guarantees that the
 dimensions of the different slots will always match (i.e the columns
@@ -96,19 +96,29 @@ fvarLabels(msnset)
 ```
 ## Tidy tools
 
-The
-[tidy tools manifesto](http://tidyverse.tidyverse.org/articles/manifesto.html) lays
-out the principles that packages in the tidyverse package. `tidyms`
-isn't part of the this `tidyvers`, but aims at applying these same
-princpiles.
+The [*tidy data*](https://www.jstatsoft.org/article/view/v059i10)
+definition
+and
+[tidy tools manifesto](http://tidyverse.tidyverse.org/articles/manifesto.html) and
+lay out the principles that packages in the tidyverse
+package. `tidies` isn't part of the this `tidyvers`, but aims at
+applying these same principles. The concepts that are relevant for the
+application to omics data are
 
+- Reuse of existing data structures; in this case `eSet` objects, that
+  constitute our *tidy* omics data.
 
+- Compose simple functions with the pipe; here we apply the widely
+  used `r CRANpkg("dplyr")` functions and `r CRANpkg("magritr")`
+  `%>%` operator.
 
+- Each of the adapted tidy function to use and return tidy `eSet`
+  data.
 
 # Examples
 
 ```{r loadpackage}
-library("tidyms")
+library("tidies")
 ```
 
 ## Order data by it feature of sample variables
@@ -155,22 +165,6 @@ msnset %>%
 	exprs
 ```
 
-## Group by one or more feature or sample variables
-
-```{r groupby}
-## Group by features
-msnset %>%
-	group_by(ProteinAccession)
-
-## Group by samples
-msnset %>%
-	group_by(group)
-
-## Group by features and samples
-msnset %>%
-	group_by(ProteinAccession) %>%
-	group_by(group)
-```
 ## Select feature or sample variables
 
 ```{r select}
@@ -190,25 +184,49 @@ msnset %>%
 	select(starts_with("Prot"))
 ```
 
+## Group by one or more feature or sample variables
+
+```{r groupby}
+## Group by features
+msnset %>%
+	group_by(ProteinAccession) %>%
+	show
+
+## Group by samples
+msnset %>%
+	group_by(group) %>%
+	show
+
+## Group by features and samples
+msnset %>%
+	group_by(ProteinAccession) %>%
+	group_by(group) %>%
+	show
+```
+
 ## Summarise the expression values of a dataset
 
 ```{r summarise}
 ## Grouping and summarising by features
 msnset %>% group_by(charge) %>%
-	summarise(median(exprs, na.rm = TRUE)) %>% exprs
+	summarise(median(exprs, na.rm = TRUE)) %>%
+	exprs
 
 msnset %>% group_by(ProteinAccession) %>%
-	summarise(median(exprs, na.rm = TRUE)) %>% exprs
+	summarise(median(exprs, na.rm = TRUE)) %>%
+	exprs %>%
+	head
 
 ## Grouping and summarising by samples
 msnset %>% group_by(group) %>%
-	summarise(mean(exprs, na.rm = TRUE)) %>% exprs %>% head
-
+	summarise(mean(exprs, na.rm = TRUE)) %>%
+	exprs %>%
+	head
 ## Grouping by features and samples
 msnset %>%
-   group_by(charge) %>%
-   summarise(mean(exprs)) %>%
-   group_by(group) %>%
-   summarise(max(exprs, na.rm = TRUE)) %>%
-   exprs
+	group_by(charge) %>%
+	summarise(mean(exprs)) %>%
+	group_by(group) %>%
+	summarise(max(exprs, na.rm = TRUE)) %>%
+	exprs
 ```

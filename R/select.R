@@ -1,6 +1,6 @@
 ##' @export
-##' @rdname tidyms
-select.MSnSet <- function(.data, ...) {
+##' @rdname tidies
+select.eSet <- function(.data, ...) {
     ftbl <- try(select(fData(.data), ...), silent = TRUE)
     ptbl <- try(select(pData(.data), ...), silent = TRUE)
     if (!inherits(ftbl, "try-error")) {

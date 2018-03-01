@@ -1,24 +1,24 @@
-Package: tidyms
-Title: A Grammar of Data Manipulation for Quantitative Proteomics
+Package: tidies
+Title: A Grammar of Data Manipulation for Omics Experiments
 Version: 0.0.1
 Authors@R: person("Laurent", "Gatto",
 		  email = "lg390@cam.ac.uk",
 		  role = c("aut", "cre"))
 Description: Implementing the dplyr grammar of data manipulation for
-	     quantitative proteomics MSnSet data.
-Depends: R (>= 3.5.0), MSnbase, dplyr
+	     eSet-based high troughput omics data.
+Depends: R (>= 3.5.0), Biobase, dplyr
 Imports: tidyr
-Suggests: knitr, BiocStyle
+Suggests: knitr, BiocStyle, MSnbase
 License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
 VignetteBuilder: knitr
-BugReports: https://github.com/lgatto/tidyms/issues
-URL: https://github.com/lgatto/tidyms
+BugReports: https://github.com/lgatto/tidies/issues
+URL: https://github.com/lgatto/tidies
 RoxygenNote: 6.0.1
 Collate:
     'DataClasses.R'
-    'tidyms.R'
+    'tidies.R'
     'arrange.R'
     'filter.R'
     'group-by.R'

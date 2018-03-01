@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Grammar of Data Manipulation for Omics Assays • tidyms</title>
+<title>A Grammar of Data Manipulation for Omics Experiments • tidies</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -24,7 +24,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">tidyms</a>
+      <a class="navbar-brand" href="../index.html">tidies</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -37,7 +37,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/lgatto/tidyms">
+  <a href="https://github.com/lgatto/tidies">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -54,7 +54,7 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>A Grammar of Data Manipulation for Omics Assays</h1>
+      <h1>A Grammar of Data Manipulation for Omics Experiments</h1>
                         <h4 class="author">Laurent Gatto</h4>
             
           </div>
@@ -62,15 +62,15 @@
     
     
 <div class="contents">
-<pre><code>## Warning: replacing previous import 'MSnbase::combine' by 'dplyr::combine'
-## when loading 'tidyms'</code></pre>
+<pre><code>## Warning: replacing previous import 'Biobase::combine' by 'dplyr::combine'
+## when loading 'tidies'</code></pre>
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>The <code>tidyms</code> package implements tidy principles as defined in the <a href="https://www.tidyverse.org/">tidyverse</a> packages to omics-type data classes, with (currently at least), an emphasis on quantitative proteomics data.</p>
-<div id="the-msnset-class" class="section level2">
+<p>The <code>tidies</code> package (from to contraction of <em>tidy</em> <code>eSet</code>) implements tidy principles as defined in the <a href="https://www.tidyverse.org/">tidyverse</a> packages to omics-type data based on the <code>eSet</code> class, with (currently at least), an emphasis on quantitative proteomics data.</p>
+<div id="high-throughput-data-and-the-eset-class" class="section level2">
 <h2 class="hasAnchor">
-<a href="#the-msnset-class" class="anchor"></a>The <code>MSnSet</code> class</h2>
+<a href="#high-throughput-data-and-the-eset-class" class="anchor"></a>High throughput data and the <code>eSet</code> class</h2>
 <p>The motivation to store omics data in dedicated containers is to coordinate the high throughput data (e.g., gene or protein expression), the sample annotation (phenotype data) and the feature annotation (feature data).</p>
 <p>A typical omics data structure, as defined by the <a href="https://bioconductor.org/packages/release/bioc/vignettes/Biobase/inst/doc/BiobaseDevelopment.pdf"><code>eSet</code></a> class, is represented below. It’s main features are</p>
 <ul>
@@ -190,13 +190,18 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 <div id="tidy-tools" class="section level2">
 <h2 class="hasAnchor">
 <a href="#tidy-tools" class="anchor"></a>Tidy tools</h2>
-<p>The <a href="http://tidyverse.tidyverse.org/articles/manifesto.html">tidy tools manifesto</a> lays out the principles that packages in the tidyverse package. <code>tidyms</code> isn’t part of the this <code>tidyvers</code>, but aims at applying these same princpiles.</p>
+<p>The <a href="https://www.jstatsoft.org/article/view/v059i10"><em>tidy data</em></a> definition and <a href="http://tidyverse.tidyverse.org/articles/manifesto.html">tidy tools manifesto</a> and lay out the principles that packages in the tidyverse package. <code>tidies</code> isn’t part of the this <code>tidyvers</code>, but aims at applying these same principles. The concepts that are relevant for the application to omics data are</p>
+<ul>
+<li><p>Reuse of existing data structures; in this case <code>eSet</code> objects, that constitute our <em>tidy</em> omics data.</p></li>
+<li><p>Compose simple functions with the pipe; here we apply the widely used <em><a href="https://CRAN.R-project.org/package=dplyr">dplyr</a></em> functions and <em><a href="https://CRAN.R-project.org/package=magritr">magritr</a></em> <code>%&gt;%</code> operator.</p></li>
+<li><p>Each of the adapted tidy function to use and return tidy <code>eSet</code> data.</p></li>
+</ul>
 </div>
 </div>
 <div id="examples" class="section level1">
 <h1 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"tidyms"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"tidies"</span>)</code></pre></div>
 <div id="order-data-by-it-feature-of-sample-variables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#order-data-by-it-feature-of-sample-variables" class="anchor"></a>Order data by it feature of sample variables</h2>
@@ -269,26 +274,6 @@ msnset <span class="op">%&gt;%</span>
 ## X47   7384.83022  3935.30012
 ## X55     15.11764    15.68074</code></pre>
 </div>
-<div id="group-by-one-or-more-feature-or-sample-variables" class="section level2">
-<h2 class="hasAnchor">
-<a href="#group-by-one-or-more-feature-or-sample-variables" class="anchor"></a>Group by one or more feature or sample variables</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Group by features
-msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(ProteinAccession)</code></pre></div>
-<pre><code>## # A tibble: 55 x 4
-## # Groups:   [?]</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Group by samples
-msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(group)</code></pre></div>
-<pre><code>## # A tibble: 55 x 4
-## # Groups:   [?]</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Group by features and samples
-msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(group)</code></pre></div>
-<pre><code>## # A tibble: 55 x 4
-## # Groups:   [?]</code></pre>
-</div>
 <div id="select-feature-or-sample-variables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#select-feature-or-sample-variables" class="anchor"></a>Select feature or sample variables</h2>
@@ -329,61 +314,103 @@ msnset <span class="op">%&gt;%</span>
 ## iTRAQ4 quantification by trapezoidation: Wed Apr  1 21:41:53 2015 
 ##  MSnbase version: 1.1.22</code></pre>
 </div>
+<div id="group-by-one-or-more-feature-or-sample-variables" class="section level2">
+<h2 class="hasAnchor">
+<a href="#group-by-one-or-more-feature-or-sample-variables" class="anchor"></a>Group by one or more feature or sample variables</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Group by features
+msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span>
+<span class="st">    </span>show</code></pre></div>
+<pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
+## assayData: 55 features, 4 samples 
+##   element names: exprs 
+## protocolData: none
+## phenoData
+##   sampleNames: iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
+##   varLabels: mz reporters group
+##   varMetadata: labelDescription
+## featureData
+##   featureNames: X1 X10 ... X9 (55 total)
+##   fvarLabels: spectrum ProteinAccession ... collision.energy (15
+##     total)
+##   fvarMetadata: labelDescription
+## experimentData: use 'experimentData(object)'
+## Annotation: No annotation 
+## Groups:
+##   features  ProteinAccession [ 40 ]
+##   samples    [ 0 ]</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Group by samples
+msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
+<span class="st">    </span>show</code></pre></div>
+<pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
+## assayData: 55 features, 4 samples 
+##   element names: exprs 
+## protocolData: none
+## phenoData
+##   sampleNames: iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
+##   varLabels: mz reporters group
+##   varMetadata: labelDescription
+## featureData
+##   featureNames: X1 X10 ... X9 (55 total)
+##   fvarLabels: spectrum ProteinAccession ... collision.energy (15
+##     total)
+##   fvarMetadata: labelDescription
+## experimentData: use 'experimentData(object)'
+## Annotation: No annotation 
+## Groups:
+##   features   [ 0 ]
+##   samples   group [ 2 ]</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Group by features and samples
+msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
+<span class="st">    </span>show</code></pre></div>
+<pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
+## assayData: 55 features, 4 samples 
+##   element names: exprs 
+## protocolData: none
+## phenoData
+##   sampleNames: iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
+##   varLabels: mz reporters group
+##   varMetadata: labelDescription
+## featureData
+##   featureNames: X1 X10 ... X9 (55 total)
+##   fvarLabels: spectrum ProteinAccession ... collision.energy (15
+##     total)
+##   fvarMetadata: labelDescription
+## experimentData: use 'experimentData(object)'
+## Annotation: No annotation 
+## Groups:
+##   features  ProteinAccession [ 40 ]
+##   samples   group [ 2 ]</code></pre>
+</div>
 <div id="summarise-the-expression-values-of-a-dataset" class="section level2">
 <h2 class="hasAnchor">
 <a href="#summarise-the-expression-values-of-a-dataset" class="anchor"></a>Summarise the expression values of a dataset</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Grouping and summarising by features
 msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(charge) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="kw">median</span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span>exprs</code></pre></div>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="kw">median</span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs</code></pre></div>
 <pre><code>##   iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
 ## 2  6916.4565   6099.295   6436.630   7715.448
 ## 3   982.4017   1119.316   1048.691   1175.080</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="kw">median</span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span>exprs</code></pre></div>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="kw">median</span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs <span class="op">%&gt;%</span>
+<span class="st">    </span>head</code></pre></div>
 <pre><code>##         iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
-## BSA      1347.6158  2247.3097  3927.6931  7661.1463
-## ECA0172 17593.5476 18545.6197 19361.8367 18328.2365
-## ECA0435  4923.6281  5557.8180  5775.2025  5079.2952
-## ECA0452  1524.1477  1399.8969  1547.2185  1563.2299
-## ECA0469  1069.9446  1035.6888  1029.4199   999.6957
-## ECA0621  1101.0620  1124.1671  1140.0931  1191.8055
-## ECA0631  5852.6654  5964.3946  5970.3694  6006.8593
-## ECA0691   760.0320   866.4404   883.9100   791.3296
-## ECA0871  6448.0829  6234.1957  6902.8903  6437.2303
-## ECA0978  2278.3661  2570.0800  2785.5656  2446.7990
-## ECA1032 32838.0439 37066.0578 41429.6267 39700.4752
-## ECA1093  5135.5601  5519.0533  5828.3708  5583.7295
-## ECA1104 21262.1475 23168.7291 25407.0685 25949.9540
-## ECA1294  3715.0893  4254.3226  4748.4615  5249.9036
-## ECA1362  4483.3199  4873.9961  6743.4406  4601.3776
-## ECA1363  1147.0380  1281.2586  1278.7010  1175.0804
-## ECA1364 26143.7542 29677.4781 29089.0593 27902.5608
-## ECA1422   739.9861   799.3501   712.5983   940.6793
-## ECA1443  2770.3769  2907.2221  3055.5165  2946.7997
-## ECA2186  2092.4763  1993.8795  2371.3424  2620.8566
-## ECA2391 30047.2436 31498.2176 38489.8088 38275.2637
-## ECA2421 11947.8808 13061.8750 12809.4914 12911.4785
-## ECA2831  1259.1890  1448.3734  1653.7490  1261.5245
-## ECA3082  4458.7717  4786.5183  4350.7847  4303.0256
-## ECA3175  3824.3562  3746.2674  4285.0212  3649.4442
-## ECA3349  2502.7792  3013.0427  3017.5382  2996.3127
-## ECA3356  8635.3165 10036.5291  9254.4317  7769.7491
-## ECA3377  3086.4498  3266.4194  4093.8033  3905.6241
-## ECA3566  6670.6942  7141.7254  7091.1509  6779.9994
-## ECA3882 31892.8928 33634.6980 37674.7272 37227.7119
-## ECA3929  8504.4817  9924.0705 10058.2660  9611.8645
-## ECA3969  2800.3956  3244.9775  2965.3188  3184.1939
-## ECA4013  7540.6373  7679.1576  7561.9833  8005.1765
-## ECA4026  1098.2095   984.6451  1236.1929  1173.1222
-## ECA4030 27638.3582 33394.0252 32104.2879 26628.7278
-## ECA4037  1566.7477  1444.2795  1455.8966  1557.1990
-## ECA4512   722.2982  1058.8712   851.4702   944.6287
-## ECA4513 10154.9533 10486.9427 11018.1912 11289.5520
-## ECA4514  6760.4024  7428.0749  7332.9639  6972.3753
-## ENO      6377.2813  2541.8109  2370.0253  1214.5980</code></pre>
+## BSA       1347.616   2247.310   3927.693  7661.1463
+## ECA0172  17593.548  18545.620  19361.837 18328.2365
+## ECA0435   4923.628   5557.818   5775.203  5079.2952
+## ECA0452   1524.148   1399.897   1547.218  1563.2299
+## ECA0469   1069.945   1035.689   1029.420   999.6957
+## ECA0621   1101.062   1124.167   1140.093  1191.8055</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Grouping and summarising by samples
 msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="kw">mean</span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span>exprs <span class="op">%&gt;%</span><span class="st"> </span>head</code></pre></div>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="kw">mean</span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs <span class="op">%&gt;%</span>
+<span class="st">    </span>head</code></pre></div>
 <pre><code>##              A          B
 ## X1   1797.4628  5794.4197
 ## X10   769.6681   826.6388
@@ -393,11 +420,11 @@ msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">g
 ## X14  6341.1393  6670.0603</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Grouping by features and samples
 msnset <span class="op">%&gt;%</span>
-<span class="st">   </span><span class="kw">group_by</span>(charge) <span class="op">%&gt;%</span>
-<span class="st">   </span><span class="kw">summarise</span>(<span class="kw">mean</span>(exprs)) <span class="op">%&gt;%</span>
-<span class="st">   </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
-<span class="st">   </span><span class="kw">summarise</span>(<span class="kw">max</span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
-<span class="st">   </span>exprs</code></pre></div>
+<span class="st">    </span><span class="kw">group_by</span>(charge) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="kw">mean</span>(exprs)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="kw">max</span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs</code></pre></div>
 <pre><code>##          A         B
 ## 2 13880.38 12660.236
 ## 3  1477.78  1346.071</code></pre>
@@ -412,7 +439,7 @@ msnset <span class="op">%&gt;%</span>
       <ul class="nav nav-pills nav-stacked">
 <li>
 <a href="#introduction">Introduction</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#the-msnset-class">The <code>MSnSet</code> class</a></li>
+<li><a href="#high-throughput-data-and-the-eset-class">High throughput data and the <code>eSet</code> class</a></li>
       <li><a href="#tidy-tools">Tidy tools</a></li>
       </ul>
 </li>
@@ -420,8 +447,8 @@ msnset <span class="op">%&gt;%</span>
 <a href="#examples">Examples</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#order-data-by-it-feature-of-sample-variables">Order data by it feature of sample variables</a></li>
       <li><a href="#return-features-and-samples-with-matching-conditions">Return features and samples with matching conditions</a></li>
-      <li><a href="#group-by-one-or-more-feature-or-sample-variables">Group by one or more feature or sample variables</a></li>
       <li><a href="#select-feature-or-sample-variables">Select feature or sample variables</a></li>
+      <li><a href="#group-by-one-or-more-feature-or-sample-variables">Group by one or more feature or sample variables</a></li>
       <li><a href="#summarise-the-expression-values-of-a-dataset">Summarise the expression values of a dataset</a></li>
       </ul>
 </li>
