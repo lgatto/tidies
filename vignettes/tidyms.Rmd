@@ -1,5 +1,5 @@
 ---
-title: "A Grammar of Data Manipulation for Quantitative Proteomics"
+title: "A Grammar of Data Manipulation for Omics Assays"
 author: Laurent Gatto
 package: tidyms
 output:
@@ -24,14 +24,46 @@ the [tidyverse](https://www.tidyverse.org/) packages to omics-type
 data classes, with (currently at least), an emphasis on quantitative
 proteomics data.
 
-```{r loadpackage}
-library("tidyms")
-```
+## The `MSnSet` class
 
-# Examples
+The motivation to store omics data in dedicated containers is to
+coordinate the high throughput data (e.g., gene or protein
+expression), the sample annotation (phenotype data) and the feature
+annotation (feature data).
 
-For all examples, we'll make use of the `msnset` object that comes
- with the MSnbase package.
+A typical omics data structure, as defined by
+the
+[`eSet`](https://bioconductor.org/packages/release/bioc/vignettes/Biobase/inst/doc/BiobaseDevelopment.pdf) class,
+is represented below. It's main features are
+
+- An assay data slot containing the quantitative omics data
+  (expression data), stored as a `matrix` and accessible with `exprs`.
+  Features defined along the rows and samples along the columns.
+
+- A sample metadata slot containing sample co-variates, stored as an
+  annotated `data.frame` and accessible with `pData`. This data frame
+  is stored with rows representing samples and sample covariate along
+  the columns, and its rows match the expression data columns exactly.
+
+- A feature metadata slot containing feature co-variates, stored as an
+  annotated `data.frame` and accessible with `fData`. This dataframe's
+  rows match the expression data rows exactly.
+
+![A typical omics data object](./msnset.png)
+
+
+The coordinated nature of the high throughput data guarantees that the
+dimensions of the different slots will always match (i.e the columns
+in the expression data and then rows in the sample metadata, as well
+as the rows in the expression data and feature metadata) during data
+manipulation. The metadata slots can grow additional co-variates
+(columns) without affecting the other structures.
+
+
+To illustrate such an omics data container, we'll make use of the
+`msnset` object that comes with the `r Biocpkg("MSnbase")` package,
+which contains data for `r nrow(msnset)` features and `r ncol(msnset)`
+samples.
 
 
 ```{r msnset}
@@ -40,6 +72,43 @@ data(msnset)
 
 ## Some test sample groups
 msnset$group <- c("A", "A", "B", "B")
+dim(msnset)
+```
+
+The expression data:
+
+```{r exprs}
+exprs(msnset)
+```
+
+The sample metadata:
+
+```{r pData}
+pData(msnset)
+```
+
+The feature metadata:
+
+```{r fData}
+fData(msnset)[1:10, 1:5]
+## all feature variables
+fvarLabels(msnset)
+```
+## Tidy tools
+
+The
+[tidy tools manifesto](http://tidyverse.tidyverse.org/articles/manifesto.html) lays
+out the principles that packages in the tidyverse package. `tidyms`
+isn't part of the this `tidyvers`, but aims at applying these same
+princpiles.
+
+
+
+
+# Examples
+
+```{r loadpackage}
+library("tidyms")
 ```
 
 ## Order data by it feature of sample variables

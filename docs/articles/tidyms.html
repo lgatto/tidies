@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Grammar of Data Manipulation for Quantitative Proteomics • tidyms</title>
+<title>A Grammar of Data Manipulation for Omics Assays • tidyms</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -54,7 +54,7 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>A Grammar of Data Manipulation for Quantitative Proteomics</h1>
+      <h1>A Grammar of Data Manipulation for Omics Assays</h1>
                         <h4 class="author">Laurent Gatto</h4>
             
           </div>
@@ -68,17 +68,135 @@
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
 <p>The <code>tidyms</code> package implements tidy principles as defined in the <a href="https://www.tidyverse.org/">tidyverse</a> packages to omics-type data classes, with (currently at least), an emphasis on quantitative proteomics data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"tidyms"</span>)</code></pre></div>
+<div id="the-msnset-class" class="section level2">
+<h2 class="hasAnchor">
+<a href="#the-msnset-class" class="anchor"></a>The <code>MSnSet</code> class</h2>
+<p>The motivation to store omics data in dedicated containers is to coordinate the high throughput data (e.g., gene or protein expression), the sample annotation (phenotype data) and the feature annotation (feature data).</p>
+<p>A typical omics data structure, as defined by the <a href="https://bioconductor.org/packages/release/bioc/vignettes/Biobase/inst/doc/BiobaseDevelopment.pdf"><code>eSet</code></a> class, is represented below. It’s main features are</p>
+<ul>
+<li><p>An assay data slot containing the quantitative omics data (expression data), stored as a <code>matrix</code> and accessible with <code>exprs</code>. Features defined along the rows and samples along the columns.</p></li>
+<li><p>A sample metadata slot containing sample co-variates, stored as an annotated <code>data.frame</code> and accessible with <code>pData</code>. This data frame is stored with rows representing samples and sample covariate along the columns, and its rows match the expression data columns exactly.</p></li>
+<li><p>A feature metadata slot containing feature co-variates, stored as an annotated <code>data.frame</code> and accessible with <code>fData</code>. This dataframe’s rows match the expression data rows exactly.</p></li>
+</ul>
+<div class="figure">
+<img src="msnset.png" alt="A typical omics data object"><p class="caption">A typical omics data object</p>
 </div>
-<div id="examples" class="section level1">
-<h1 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h1>
-<p>For all examples, we’ll make use of the <code>msnset</code> object that comes with the MSnbase package.</p>
+<p>The coordinated nature of the high throughput data guarantees that the dimensions of the different slots will always match (i.e the columns in the expression data and then rows in the sample metadata, as well as the rows in the expression data and feature metadata) during data manipulation. The metadata slots can grow additional co-variates (columns) without affecting the other structures.</p>
+<p>To illustrate such an omics data container, we’ll make use of the <code>msnset</code> object that comes with the <em><a href="http://bioconductor.org/packages/MSnbase">MSnbase</a></em> package, which contains data for 55 features and 4 samples.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"MSnbase"</span>)
 <span class="kw">data</span>(msnset)
 
 ## Some test sample groups
-msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>)</code></pre></div>
+msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>)
+<span class="kw">dim</span>(msnset)</code></pre></div>
+<pre><code>## [1] 55  4</code></pre>
+<p>The expression data:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exprs</span>(msnset)</code></pre></div>
+<pre><code>##       iTRAQ4.114  iTRAQ4.115  iTRAQ4.116  iTRAQ4.117
+## X1    1347.61584  2247.30975  3927.69307  7661.14628
+## X10    739.98608   799.35012   712.59830   940.67930
+## X11  27638.35819 33394.02524 32104.28786 26628.72776
+## X12  31892.89279 33634.69801 37674.72721 37227.71193
+## X13  26143.75416 29677.47813 29089.05931 27902.56076
+## X14   6448.08287  6234.19568  6902.89029  6437.23029
+## X15    722.29818  1058.87116   851.47016   944.62868
+## X16  10154.95328 10486.94267 11018.19118 11289.55202
+## X17   2800.39559  3244.97754  2965.31877  3184.19386
+## X18   4458.77171  4786.51826  4350.78472  4303.02563
+## X19  32838.04395 37066.05777 41429.62671 39700.47518
+## X2    3715.08932  4254.32256  4748.46152  5249.90356
+## X20  34509.68621 34928.74712 41911.03212 42843.83865
+## X21  21262.14754 23168.72913 25407.06847 25949.95404
+## X22   8635.31649 10036.52908  9254.43168  7769.74907
+## X23   1566.74773  1444.27953  1455.89659  1557.19896
+## X24   1101.06205  1124.16708  1140.09311  1191.80548
+## X25   5135.56011  5519.05329  5828.37084  5583.72953
+## X26   1524.14767  1399.89688  1547.21848  1563.22990
+## X27 147093.25030 94770.28613 42616.07457 21259.42497
+## X28  30047.24363 31498.21764 38489.80882 38275.26375
+## X29   9339.07912 10509.31520 10824.73863  9504.38777
+## X3    4483.31990  4873.99606  6743.44063  4601.37758
+## X30   1147.03795  1281.25856  1278.70097  1175.08044
+## X31  12682.55301 13586.68865 13579.17358 13067.36481
+## X32    508.17713   606.32085   725.66638   654.20259
+## X33    760.03204   866.44037   883.90995   791.32963
+## X34    658.83542   696.76216   603.12820   492.63404
+## X35   3086.44981  3266.41942  4093.80327  3905.62406
+## X36   2278.36612  2570.08001  2785.56562  2446.79895
+## X37   1259.18898  1448.37341  1653.74896  1261.52449
+## X38  11468.80365 12273.93798 12338.65631 11686.38167
+## X39    982.40174  1119.31558   880.69916  1100.37213
+## X4    1918.08242  1418.03978  1117.60113  1581.95396
+## X40   2052.00113  2582.21183  1918.57369  2258.36892
+## X41  17593.54759 18545.61972 19361.83670 18328.23650
+## X42   5852.66544  5964.39464  5970.36943  6006.85932
+## X43    872.45566   956.10275  1310.23148  1297.82407
+## X44   1157.48743   952.06210  1178.14071   899.01924
+## X45   1932.12004  2161.24030  2327.27156  2115.24632
+## X46   5369.73246  1148.32171          NA  1313.44599
+## X47   7384.83022  3935.30012  2370.02527  1115.75006
+## X48    796.22002   669.10772   979.78007   855.39249
+## X49   8504.48167  9924.07051 10058.26597  9611.86446
+## X5   15210.97924 15296.25571 15592.76007 16550.50179
+## X50   1400.19902  1300.18250  1492.60564  1490.85191
+## X51   7540.63726  7679.15758  7561.98334  8005.17654
+## X52   1593.43572  2927.41128  5028.29190 10362.14077
+## X53    184.67577   207.80235   515.05578   865.38161
+## X54   2092.47631  1993.87954  2371.34244  2620.85663
+## X55     15.11764    15.68074    14.23333    14.03018
+## X6    4133.10269  5069.98262  4724.84489  4694.80139
+## X7   11947.88077 13061.87498 12809.49141 12911.47853
+## X8    2770.37694  2907.22208  3055.51653  2946.79966
+## X9    3824.35623  3746.26739  4285.02115  3649.44422</code></pre>
+<p>The sample metadata:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pData</span>(msnset)</code></pre></div>
+<pre><code>##               mz reporters group
+## iTRAQ4.114 114.1    iTRAQ4     A
+## iTRAQ4.115 115.1    iTRAQ4     A
+## iTRAQ4.116 116.1    iTRAQ4     B
+## iTRAQ4.117 117.1    iTRAQ4     B</code></pre>
+<p>The feature metadata:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fData</span>(msnset)[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</code></pre></div>
+<pre><code>##     spectrum ProteinAccession                       ProteinDescription
+## X1         1              BSA                     bovine serum albumin
+## X10       10          ECA1422 glucose-1-phosphate cytidylyltransferase
+## X11       11          ECA4030         50S ribosomal subunit protein L4
+## X12       12          ECA3882                   chaperone protein DnaK
+## X13       13          ECA1364      succinyl-CoA synthetase alpha chain
+## X14       14          ECA0871              NADP-dependent malic enzyme
+## X15       15          ECA4512                  ATP synthase beta chain
+## X16       16          ECA4513                 ATP synthase gamma chain
+## X17       17          ECA3969  fumarate reductase flavoprotein subunit
+## X18       18          ECA3082            malate:quinone oxidoreductase
+##       PeptideSequence file
+## X1             NYQEAK    1
+## X10   VTLVDTGEHSMTGGR    1
+## X11             SPIWR    1
+## X12          TAIDDALK    1
+## X13            SILINK    1
+## X14      DFEVVNNESDPR    1
+## X15 EGNDFYHEMTDSNVIDK    1
+## X16        VMLQAYDEGR    1
+## X17     ANAVVLATGGAGR    1
+## X18         VATPEWQSK    1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## all feature variables
+<span class="kw">fvarLabels</span>(msnset)</code></pre></div>
+<pre><code>##  [1] "spectrum"            "ProteinAccession"    "ProteinDescription" 
+##  [4] "PeptideSequence"     "file"                "retention.time"     
+##  [7] "precursor.mz"        "precursor.intensity" "charge"             
+## [10] "peaks.count"         "tic"                 "ionCount"           
+## [13] "ms.level"            "acquisition.number"  "collision.energy"</code></pre>
+</div>
+<div id="tidy-tools" class="section level2">
+<h2 class="hasAnchor">
+<a href="#tidy-tools" class="anchor"></a>Tidy tools</h2>
+<p>The <a href="http://tidyverse.tidyverse.org/articles/manifesto.html">tidy tools manifesto</a> lays out the principles that packages in the tidyverse package. <code>tidyms</code> isn’t part of the this <code>tidyvers</code>, but aims at applying these same princpiles.</p>
+</div>
+</div>
+<div id="examples" class="section level1">
+<h1 class="hasAnchor">
+<a href="#examples" class="anchor"></a>Examples</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"tidyms"</span>)</code></pre></div>
 <div id="order-data-by-it-feature-of-sample-variables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#order-data-by-it-feature-of-sample-variables" class="anchor"></a>Order data by it feature of sample variables</h2>
@@ -292,7 +410,12 @@ msnset <span class="op">%&gt;%</span>
         <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#introduction">Introduction</a></li>
+<li>
+<a href="#introduction">Introduction</a><ul class="nav nav-pills nav-stacked">
+<li><a href="#the-msnset-class">The <code>MSnSet</code> class</a></li>
+      <li><a href="#tidy-tools">Tidy tools</a></li>
+      </ul>
+</li>
       <li>
 <a href="#examples">Examples</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#order-data-by-it-feature-of-sample-variables">Order data by it feature of sample variables</a></li>
