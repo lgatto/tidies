@@ -9,5 +9,5 @@
 ##' @title A Grammar of Data Manipulation for Quantitative Proteomics
 ##'
 ##' @rdname tidies
-##' @import Biobase dplyr
+##' @import Biobase MSnbase dplyr methods
 "_PACKAGE"

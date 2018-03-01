@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • tidies</title>
+<title>A eSet/MSnSet object with grouped sample or feature variables — Grouped_eSet-class • tidies</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -36,7 +36,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -74,52 +74,70 @@
       </header>
 
       <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.0.1</small>
-      </h1>
+    <h1>A eSet/MSnSet object with grouped sample or feature variables</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    
+    <p>This object extends the <a href='http://www.rdocumentation.org/packages/MSnbase/topics/MSnSet-class'>MSnbase::MSnSet</a> class by
+adding slots necessary to record the grouping structure. These
+additional slots are inherited from the <a href='http://www.rdocumentation.org/packages/dplyr/topics/grouped_df'>dplyr::grouped_df</a>
+class.</p><pre>Objects of class `Grouped_eSet` are created by the `group_by`
+function. See the vignette for examples.
+</pre>
+    
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <pre class="usage"><span class='co'># S4 method for Grouped_eSet</span>
+<span class='fu'>show</span>(<span class='no'>object</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>object</th>
+      <td><p>An `Grouped_eSet` instance.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="Grouped_eSet.html">show</a></code> </p>
-          </td>
-          <td><p>A eSet/MSnSet object with grouped sample or feature variables</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="tidies.html">arrange</a></code> <code><a href="tidies.html">filter</a></code> <code><a href="tidies.html">group_by</a></code> <code><a href="tidies.html">select</a></code> <code><a href="tidies.html">summarise</a></code> </p>
-          </td>
-          <td><p>A Grammar of Data Manipulation for Quantitative Proteomics</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    
+    <dl class='dl-horizontal'>
+<dt><code>fvars</code></dt><dd><p>a <code>character</code> vector or a <code>list</code> of grouping feature
+variables.</p></dd>
+    <dt><code>fdrop</code></dt><dd><p>a logical (default is <code>TRUE</code>) to preserve all feature
+variable factor levels, even those without data.</p></dd>
+    <dt><code>findices</code></dt><dd><p>indices defining the feature groups.</p></dd>
+    <dt><code>fgroup_sizes</code></dt><dd><p>an <code>integer</code> defining the sizes of the feature
+groups.</p></dd>
+    <dt><code>fbiggest_group_size</code></dt><dd><p>an <code>integer</code> defining the biggest
+feature group size.</p></dd>
+    <dt><code>flabels</code></dt><dd><p>a <code>data.frame</code> defining the feature groups and
+levels.</p></dd>
+    <dt><code>pvars</code></dt><dd><p>a <code>character</code> vector or a <code>list</code> of grouping sample
+variables.</p></dd>
+    <dt><code>pdrop</code></dt><dd><p>a logical (default is <code>TRUE</code>) to preserve all sample
+variable factor levels, even those without data.</p></dd>
+    <dt><code>pindices</code></dt><dd><p>indices defining the sample groups.</p></dd>
+    <dt><code>pgroup_sizes</code></dt><dd><p>an <code>integer</code> defining the sizes of the sample
+groups.</p></dd>
+    <dt><code>pbiggest_group_size</code></dt><dd><p>an <code>integer</code> defining the biggest sample
+group size.</p></dd>
+    <dt><code>plabels</code></dt><dd><p>a <code>data.frame</code> defining the sample groups and
+levels.</p></dd>
+</dl>
+    
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-    </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#slots">Slots</a></li>
+          </ul>
+
   </div>
 </div>
 

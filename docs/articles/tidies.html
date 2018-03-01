@@ -62,12 +62,12 @@
     
     
 <div class="contents">
-<pre><code>## Warning: replacing previous import 'Biobase::combine' by 'dplyr::combine'
+<pre><code>## Warning: replacing previous import 'MSnbase::combine' by 'dplyr::combine'
 ## when loading 'tidies'</code></pre>
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>The <code>tidies</code> package (from to contraction of <em>tidy</em> <code>eSet</code>) implements tidy principles as defined in the <a href="https://www.tidyverse.org/">tidyverse</a> packages to omics-type data based on the <code>eSet</code> class, with (currently at least), an emphasis on quantitative proteomics data.</p>
+<p>The <code>tidies</code> package (from to contraction of <em>tidy</em> <code>eSet</code>) implements tidy principles as defined in the <a href="https://www.tidyverse.org/">tidyverse</a> packages to omics-type data based on the <code>eSet</code> class, with (currently at least for now), an emphasis on quantitative proteomics data.</p>
 <div id="high-throughput-data-and-the-eset-class" class="section level2">
 <h2 class="hasAnchor">
 <a href="#high-throughput-data-and-the-eset-class" class="anchor"></a>High throughput data and the <code>eSet</code> class</h2>
@@ -193,7 +193,7 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 <p>The <a href="https://www.jstatsoft.org/article/view/v059i10"><em>tidy data</em></a> definition and <a href="http://tidyverse.tidyverse.org/articles/manifesto.html">tidy tools manifesto</a> and lay out the principles that packages in the tidyverse package. <code>tidies</code> isn’t part of the this <code>tidyvers</code>, but aims at applying these same principles. The concepts that are relevant for the application to omics data are</p>
 <ul>
 <li><p>Reuse of existing data structures; in this case <code>eSet</code> objects, that constitute our <em>tidy</em> omics data.</p></li>
-<li><p>Compose simple functions with the pipe; here we apply the widely used <em><a href="https://CRAN.R-project.org/package=dplyr">dplyr</a></em> functions and <em><a href="https://CRAN.R-project.org/package=magritr">magritr</a></em> <code>%&gt;%</code> operator.</p></li>
+<li><p>Compose simple functions with the pipe; here we apply the widely used <em><a href="https://CRAN.R-project.org/package=dplyr">dplyr</a></em> functions and <em><a href="https://CRAN.R-project.org/package=magrittr">magrittr</a></em> <code>%&gt;%</code> operator.</p></li>
 <li><p>Each of the adapted tidy function to use and return tidy <code>eSet</code> data.</p></li>
 </ul>
 </div>
@@ -201,6 +201,7 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 <div id="examples" class="section level1">
 <h1 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h1>
+<p>We start by loading the <code>tidies</code> package (which also automatically loads and attached <em><a href="https://CRAN.R-project.org/package=magrittr">magrittr</a></em> for the <code>%&gt;%</code> operator).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"tidies"</span>)</code></pre></div>
 <div id="order-data-by-it-feature-of-sample-variables" class="section level2">
 <h2 class="hasAnchor">
@@ -319,71 +320,20 @@ msnset <span class="op">%&gt;%</span>
 <a href="#group-by-one-or-more-feature-or-sample-variables" class="anchor"></a>Group by one or more feature or sample variables</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Group by features
 msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span>
-<span class="st">    </span>show</code></pre></div>
-<pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
-## assayData: 55 features, 4 samples 
-##   element names: exprs 
-## protocolData: none
-## phenoData
-##   sampleNames: iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
-##   varLabels: mz reporters group
-##   varMetadata: labelDescription
-## featureData
-##   featureNames: X1 X10 ... X9 (55 total)
-##   fvarLabels: spectrum ProteinAccession ... collision.energy (15
-##     total)
-##   fvarMetadata: labelDescription
-## experimentData: use 'experimentData(object)'
-## Annotation: No annotation 
-## Groups:
-##   features  ProteinAccession [ 40 ]
-##   samples    [ 0 ]</code></pre>
+<span class="st">    </span><span class="kw">group_by</span>(ProteinAccession)</code></pre></div>
+<pre><code>## # A tibble: 55 x 4
+## # Groups:   [?]</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Group by samples
 msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
-<span class="st">    </span>show</code></pre></div>
-<pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
-## assayData: 55 features, 4 samples 
-##   element names: exprs 
-## protocolData: none
-## phenoData
-##   sampleNames: iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
-##   varLabels: mz reporters group
-##   varMetadata: labelDescription
-## featureData
-##   featureNames: X1 X10 ... X9 (55 total)
-##   fvarLabels: spectrum ProteinAccession ... collision.energy (15
-##     total)
-##   fvarMetadata: labelDescription
-## experimentData: use 'experimentData(object)'
-## Annotation: No annotation 
-## Groups:
-##   features   [ 0 ]
-##   samples   group [ 2 ]</code></pre>
+<span class="st">    </span><span class="kw">group_by</span>(group)</code></pre></div>
+<pre><code>## # A tibble: 55 x 4
+## # Groups:   [?]</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Group by features and samples
 msnset <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
-<span class="st">    </span>show</code></pre></div>
-<pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
-## assayData: 55 features, 4 samples 
-##   element names: exprs 
-## protocolData: none
-## phenoData
-##   sampleNames: iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
-##   varLabels: mz reporters group
-##   varMetadata: labelDescription
-## featureData
-##   featureNames: X1 X10 ... X9 (55 total)
-##   fvarLabels: spectrum ProteinAccession ... collision.energy (15
-##     total)
-##   fvarMetadata: labelDescription
-## experimentData: use 'experimentData(object)'
-## Annotation: No annotation 
-## Groups:
-##   features  ProteinAccession [ 40 ]
-##   samples   group [ 2 ]</code></pre>
+<span class="st">    </span><span class="kw">group_by</span>(group)</code></pre></div>
+<pre><code>## # A tibble: 55 x 4
+## # Groups:   [?]</code></pre>
 </div>
 <div id="summarise-the-expression-values-of-a-dataset" class="section level2">
 <h2 class="hasAnchor">

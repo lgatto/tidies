@@ -6,9 +6,9 @@ Authors@R: person("Laurent", "Gatto",
 		  role = c("aut", "cre"))
 Description: Implementing the dplyr grammar of data manipulation for
 	     eSet-based high troughput omics data.
-Depends: R (>= 3.5.0), Biobase, dplyr
+Depends: R (>= 3.5.0), Biobase, MSnbase, dplyr, methods
 Imports: tidyr
-Suggests: knitr, BiocStyle, MSnbase
+Suggests: knitr, BiocStyle
 License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
