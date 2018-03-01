@@ -38,6 +38,7 @@ setOldClass("grouped_df")
 ##' @slot plabels a `data.frame` defining the sample groups and
 ##'     levels.
 ##' @export
+##' @aliases Grouped_eSet
 ##' @rdname Grouped_eSet
 ##' @md
 .Grouped_eSet <-

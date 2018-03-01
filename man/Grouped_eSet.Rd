@@ -4,6 +4,7 @@
 \name{Grouped_eSet-class}
 \alias{Grouped_eSet-class}
 \alias{.Grouped_eSet}
+\alias{Grouped_eSet}
 \alias{show,Grouped_eSet-method}
 \title{A eSet/MSnSet object with grouped sample or feature variables}
 \usage{
