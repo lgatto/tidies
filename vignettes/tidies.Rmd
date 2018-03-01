@@ -118,7 +118,7 @@ application to omics data are
 # Examples
 
 We start by loading the `tidies` package (which also automatically
-loads and attached `r CRANpkg("magrittr")` for the `%>%` operator).
+loads and attaches `r CRANpkg("magrittr")` for the `%>%` operator).
 
 ```{r loadpackage}
 library("tidies")
@@ -189,25 +189,36 @@ msnset %>%
 
 ## Group by one or more feature or sample variables
 
-```{r groupby}
-## Group by features
-msnset %>%
-	group_by(ProteinAccession)
+Group by features
 
-## Group by samples
-msnset %>%
-	group_by(group)
-
-## Group by features and samples
+```{r groupby1}
 msnset %>%
 	group_by(ProteinAccession) %>%
-	group_by(group)
+	show
+```
+
+Group by samples
+
+```{r groupby2}
+msnset %>%
+	group_by(group) %>%
+	show
+```
+
+Group by features and samples
+
+```{r groupby3}
+msnset %>%
+	group_by(ProteinAccession) %>%
+	group_by(group) %>%
+	show
 ```
 
 ## Summarise the expression values of a dataset
 
-```{r summarise}
-## Grouping and summarising by features
+Grouping and summarising by features
+
+```{r summarise1}
 msnset %>% group_by(charge) %>%
 	summarise(median(exprs, na.rm = TRUE)) %>%
 	exprs
@@ -216,8 +227,11 @@ msnset %>% group_by(ProteinAccession) %>%
 	summarise(median(exprs, na.rm = TRUE)) %>%
 	exprs %>%
 	head
+```
 
-## Grouping and summarising by samples
+Grouping and summarising by samples
+
+```{r summerise2}
 msnset %>% group_by(group) %>%
 	summarise(mean(exprs, na.rm = TRUE)) %>%
 	exprs %>%

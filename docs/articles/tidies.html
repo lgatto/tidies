@@ -201,7 +201,7 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 <div id="examples" class="section level1">
 <h1 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h1>
-<p>We start by loading the <code>tidies</code> package (which also automatically loads and attached <em><a href="https://CRAN.R-project.org/package=magrittr">magrittr</a></em> for the <code>%&gt;%</code> operator).</p>
+<p>We start by loading the <code>tidies</code> package (which also automatically loads and attaches <em><a href="https://CRAN.R-project.org/package=magrittr">magrittr</a></em> for the <code>%&gt;%</code> operator).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"tidies"</span>)</code></pre></div>
 <div id="order-data-by-it-feature-of-sample-variables" class="section level2">
 <h2 class="hasAnchor">
@@ -318,28 +318,91 @@ msnset <span class="op">%&gt;%</span>
 <div id="group-by-one-or-more-feature-or-sample-variables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#group-by-one-or-more-feature-or-sample-variables" class="anchor"></a>Group by one or more feature or sample variables</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Group by features
-msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(ProteinAccession)</code></pre></div>
-<pre><code>## # A tibble: 55 x 4
-## # Groups:   [?]</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Group by samples
-msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(group)</code></pre></div>
-<pre><code>## # A tibble: 55 x 4
-## # Groups:   [?]</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Group by features and samples
-msnset <span class="op">%&gt;%</span>
+<p>Group by features</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(group)</code></pre></div>
-<pre><code>## # A tibble: 55 x 4
-## # Groups:   [?]</code></pre>
+<span class="st">    </span>show</code></pre></div>
+<pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
+## assayData: 55 features, 4 samples 
+##   element names: exprs 
+## protocolData: none
+## phenoData
+##   sampleNames: iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
+##   varLabels: mz reporters group
+##   varMetadata: labelDescription
+## featureData
+##   featureNames: X1 X10 ... X9 (55 total)
+##   fvarLabels: spectrum ProteinAccession ... collision.energy (15
+##     total)
+##   fvarMetadata: labelDescription
+## experimentData: use 'experimentData(object)'
+## Annotation: No annotation 
+## - - - Processing information - - -
+## Data loaded: Wed May 11 18:54:39 2011 
+## iTRAQ4 quantification by trapezoidation: Wed Apr  1 21:41:53 2015 
+##  MSnbase version: 1.1.22 
+## Groups:
+##   features  ProteinAccession [ 40 ]
+##   samples    [ 0 ]</code></pre>
+<p>Group by samples</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
+<span class="st">    </span>show</code></pre></div>
+<pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
+## assayData: 55 features, 4 samples 
+##   element names: exprs 
+## protocolData: none
+## phenoData
+##   sampleNames: iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
+##   varLabels: mz reporters group
+##   varMetadata: labelDescription
+## featureData
+##   featureNames: X1 X10 ... X9 (55 total)
+##   fvarLabels: spectrum ProteinAccession ... collision.energy (15
+##     total)
+##   fvarMetadata: labelDescription
+## experimentData: use 'experimentData(object)'
+## Annotation: No annotation 
+## - - - Processing information - - -
+## Data loaded: Wed May 11 18:54:39 2011 
+## iTRAQ4 quantification by trapezoidation: Wed Apr  1 21:41:53 2015 
+##  MSnbase version: 1.1.22 
+## Groups:
+##   features   [ 0 ]
+##   samples   group [ 2 ]</code></pre>
+<p>Group by features and samples</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
+<span class="st">    </span>show</code></pre></div>
+<pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
+## assayData: 55 features, 4 samples 
+##   element names: exprs 
+## protocolData: none
+## phenoData
+##   sampleNames: iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
+##   varLabels: mz reporters group
+##   varMetadata: labelDescription
+## featureData
+##   featureNames: X1 X10 ... X9 (55 total)
+##   fvarLabels: spectrum ProteinAccession ... collision.energy (15
+##     total)
+##   fvarMetadata: labelDescription
+## experimentData: use 'experimentData(object)'
+## Annotation: No annotation 
+## - - - Processing information - - -
+## Data loaded: Wed May 11 18:54:39 2011 
+## iTRAQ4 quantification by trapezoidation: Wed Apr  1 21:41:53 2015 
+##  MSnbase version: 1.1.22 
+## Groups:
+##   features  ProteinAccession [ 40 ]
+##   samples   group [ 2 ]</code></pre>
 </div>
 <div id="summarise-the-expression-values-of-a-dataset" class="section level2">
 <h2 class="hasAnchor">
 <a href="#summarise-the-expression-values-of-a-dataset" class="anchor"></a>Summarise the expression values of a dataset</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Grouping and summarising by features
-msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(charge) <span class="op">%&gt;%</span>
+<p>Grouping and summarising by features</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(charge) <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">summarise</span>(<span class="kw">median</span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
 <span class="st">    </span>exprs</code></pre></div>
 <pre><code>##   iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
@@ -356,8 +419,8 @@ msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">g
 ## ECA0452   1524.148   1399.897   1547.218  1563.2299
 ## ECA0469   1069.945   1035.689   1029.420   999.6957
 ## ECA0621   1101.062   1124.167   1140.093  1191.8055</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Grouping and summarising by samples
-msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
+<p>Grouping and summarising by samples</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">summarise</span>(<span class="kw">mean</span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
 <span class="st">    </span>exprs <span class="op">%&gt;%</span>
 <span class="st">    </span>head</code></pre></div>
