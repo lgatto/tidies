@@ -1,10 +1,8 @@
 setOldClass("grouped_df")
 
-
 ## This class is currently extends MSnSets (that extend eSets
 ## directly) rather than eSets because the latter are virtual, and
 ## require some additional plumbing (see for example below).
-
 
 ##' A eSet/MSnSet object with grouped sample or feature variables
 ##'
@@ -58,9 +56,11 @@ setOldClass("grouped_df")
                  plabels = "data.frame"),
              contains = c("MSnSet", "grouped_df"))
 
+
 ##' @export
 ##' @rdname Grouped_eSet
 ##' @param object An `Grouped_eSet` instance.
+##' @md
 setMethod("show", "Grouped_eSet",
           function(object) {
               callNextMethod()
@@ -70,7 +70,6 @@ setMethod("show", "Grouped_eSet",
               cat("  features ", object@fvars, "[", fgrps, "]\n")
               cat("  samples  ", object@pvars, "[", pgrps, "]\n")
           })
-
 
 ##' @export
 setAs("MSnSet", "Grouped_eSet",

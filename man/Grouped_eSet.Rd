@@ -11,7 +11,7 @@
 \S4method{show}{Grouped_eSet}(object)
 }
 \arguments{
-\item{object}{An `Grouped_eSet` instance.}
+\item{object}{An \code{Grouped_eSet} instance.}
 }
 \description{
 This object extends the \link[MSnbase:MSnSet]{MSnbase::MSnSet} class by adding slots
