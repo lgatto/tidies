@@ -12,7 +12,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r env, echo=FALSE, message=FALSE}
+```{r env, echo=FALSE, message=FALSE, warning=FALSE}
 suppressPackageStartupMessages(library("tidies"))
 suppressPackageStartupMessages(library("BiocStyle"))
 suppressPackageStartupMessages(library("MSnbase"))
@@ -143,14 +143,19 @@ loads and attaches `r CRANpkg("magrittr")` for the `%>%` operator).
 library("tidies")
 ```
 
-## Order data by it feature of sample variables
+## Select feature or sample variables
 
-```{r arrange}
-## Arrange columns/samples
+Select sample variables (updates only the phenotypic data)
+
+```{r selectsamples}
 msnset %>%
-	arrange(desc(group)) %>%
+	select(group) %>%
 	pData
+```
 
+Select feature variables (updates only the feature data)
+
+```{r selectfeats}
 ## All feature variables
 fvarLabels(msnset)
 
@@ -159,7 +164,34 @@ msnset %>%
 	select(charge) %>%
 	fvarLabels
 
-## Arrange rows/features and select feature variables
+## Select features using a pattern
+msnset %>%
+	select(starts_with("Protein")) %>%
+	fvarLabels
+```
+
+Select sample and feature variables
+
+```{r selectboth}
+msnset %>%
+	select(group) %>%
+	select(starts_with("Prot"))
+```
+
+
+## Order data by it feature of sample variables
+
+Arrange columns/samples
+
+```{r arrangesamples}
+msnset %>%
+	arrange(desc(group)) %>%
+	pData
+```
+
+Arrange rows/features and select feature variables
+
+```{r arrangefeats}
 msnset %>%
 	arrange(charge) %>%
 	select(charge) %>%
@@ -168,42 +200,31 @@ msnset %>%
 
 ## Return features and samples with matching conditions
 
-```{r filter}
-## Filter using feature variables
+Filter using feature variables
+
+```{r filterfeats}
 msnset %>%
 	filter(ProteinAccession == "ENO") %>%
 	exprs
+```
 
-## Filter using phenotypic (samples) variables
+Filter using phenotypic (samples) variables
+
+```{r filtersamples}
 msnset %>%
 	filter(group == "A") %>%
 	exprs %>%
 	head
 
-## Filter on both feature and sample variables
+```
+
+Filter on both feature and sample variables
+
+```{r filterboth}
 msnset %>%
 	filter(group == "A") %>%
 	filter(ProteinAccession == "ENO") %>%
 	exprs
-```
-
-## Select feature or sample variables
-
-```{r select}
-## Select sample variables (updates only the phenotypic data)
-msnset %>%
-	select(group) %>%
-	pData
-
-## Select feature variables (updates only the feature data)
-msnset %>%
-	select(starts_with("Protein")) %>%
-	fvarLabels
-
-## Select sample and feature variables
-msnset %>%
-	select(group) %>%
-	select(starts_with("Prot"))
 ```
 
 ## Group by one or more feature or sample variables

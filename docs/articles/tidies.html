@@ -62,8 +62,6 @@
     
     
 <div class="contents">
-<pre><code>## Warning: replacing previous import 'MSnbase::combine' by 'dplyr::combine'
-## when loading 'tidies'</code></pre>
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
@@ -226,18 +224,19 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 <a href="#examples" class="anchor"></a>Examples</h1>
 <p>We start by loading the <code>tidies</code> package (which also automatically loads and attaches <em><a href="https://CRAN.R-project.org/package=magrittr">magrittr</a></em> for the <code>%&gt;%</code> operator).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"tidies"</span>)</code></pre></div>
-<div id="order-data-by-it-feature-of-sample-variables" class="section level2">
+<div id="select-feature-or-sample-variables" class="section level2">
 <h2 class="hasAnchor">
-<a href="#order-data-by-it-feature-of-sample-variables" class="anchor"></a>Order data by it feature of sample variables</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Arrange columns/samples
-msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(group)) <span class="op">%&gt;%</span>
+<a href="#select-feature-or-sample-variables" class="anchor"></a>Select feature or sample variables</h2>
+<p>Select sample variables (updates only the phenotypic data)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(group) <span class="op">%&gt;%</span>
 <span class="st">    </span>pData</code></pre></div>
-<pre><code>##               mz reporters group
-## iTRAQ4.116 116.1    iTRAQ4     B
-## iTRAQ4.117 117.1    iTRAQ4     B
-## iTRAQ4.114 114.1    iTRAQ4     A
-## iTRAQ4.115 115.1    iTRAQ4     A</code></pre>
+<pre><code>##            group
+## iTRAQ4.114     A
+## iTRAQ4.115     A
+## iTRAQ4.116     B
+## iTRAQ4.117     B</code></pre>
+<p>Select feature variables (updates only the feature data)</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## All feature variables
 <span class="kw">fvarLabels</span>(msnset)</code></pre></div>
 <pre><code>##  [1] "spectrum"            "ProteinAccession"    "ProteinDescription" 
@@ -250,73 +249,13 @@ msnset <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">select</span>(charge) <span class="op">%&gt;%</span>
 <span class="st">    </span>fvarLabels</code></pre></div>
 <pre><code>## [1] "charge"</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Arrange rows/features and select feature variables
-msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">arrange</span>(charge) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(charge) <span class="op">%&gt;%</span>
-<span class="st">    </span>fData <span class="op">%&gt;%</span><span class="st"> </span>head</code></pre></div>
-<pre><code>##     charge
-## X1       2
-## X11      2
-## X12      2
-## X13      2
-## X14      2
-## X16      2</code></pre>
-</div>
-<div id="return-features-and-samples-with-matching-conditions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#return-features-and-samples-with-matching-conditions" class="anchor"></a>Return features and samples with matching conditions</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Filter using feature variables
-msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">filter</span>(ProteinAccession <span class="op">==</span><span class="st"> "ENO"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span>exprs</code></pre></div>
-<pre><code>##       iTRAQ4.114  iTRAQ4.115  iTRAQ4.116  iTRAQ4.117
-## X27 147093.25030 94770.28613 42616.07457 21259.42497
-## X46   5369.73246  1148.32171          NA  1313.44599
-## X47   7384.83022  3935.30012  2370.02527  1115.75006
-## X55     15.11764    15.68074    14.23333    14.03018</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Filter using phenotypic (samples) variables
-msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">filter</span>(group <span class="op">==</span><span class="st"> "A"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span>exprs <span class="op">%&gt;%</span>
-<span class="st">    </span>head</code></pre></div>
-<pre><code>##     iTRAQ4.114 iTRAQ4.115
-## X1   1347.6158  2247.3097
-## X10   739.9861   799.3501
-## X11 27638.3582 33394.0252
-## X12 31892.8928 33634.6980
-## X13 26143.7542 29677.4781
-## X14  6448.0829  6234.1957</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Filter on both feature and sample variables
-msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">filter</span>(group <span class="op">==</span><span class="st"> "A"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">filter</span>(ProteinAccession <span class="op">==</span><span class="st"> "ENO"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span>exprs</code></pre></div>
-<pre><code>##       iTRAQ4.114  iTRAQ4.115
-## X27 147093.25030 94770.28613
-## X46   5369.73246  1148.32171
-## X47   7384.83022  3935.30012
-## X55     15.11764    15.68074</code></pre>
-</div>
-<div id="select-feature-or-sample-variables" class="section level2">
-<h2 class="hasAnchor">
-<a href="#select-feature-or-sample-variables" class="anchor"></a>Select feature or sample variables</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Select sample variables (updates only the phenotypic data)
-msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(group) <span class="op">%&gt;%</span>
-<span class="st">    </span>pData</code></pre></div>
-<pre><code>##            group
-## iTRAQ4.114     A
-## iTRAQ4.115     A
-## iTRAQ4.116     B
-## iTRAQ4.117     B</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Select feature variables (updates only the feature data)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Select features using a pattern
 msnset <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">"Protein"</span>)) <span class="op">%&gt;%</span>
 <span class="st">    </span>fvarLabels</code></pre></div>
 <pre><code>## [1] "ProteinAccession"   "ProteinDescription"</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Select sample and feature variables
-msnset <span class="op">%&gt;%</span>
+<p>Select sample and feature variables</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">select</span>(group) <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">"Prot"</span>))</code></pre></div>
 <pre><code>## MSnSet (storageMode: lockedEnvironment)
@@ -337,6 +276,66 @@ msnset <span class="op">%&gt;%</span>
 ## Data loaded: Wed May 11 18:54:39 2011 
 ## iTRAQ4 quantification by trapezoidation: Wed Apr  1 21:41:53 2015 
 ##  MSnbase version: 1.1.22</code></pre>
+</div>
+<div id="order-data-by-it-feature-of-sample-variables" class="section level2">
+<h2 class="hasAnchor">
+<a href="#order-data-by-it-feature-of-sample-variables" class="anchor"></a>Order data by it feature of sample variables</h2>
+<p>Arrange columns/samples</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(group)) <span class="op">%&gt;%</span>
+<span class="st">    </span>pData</code></pre></div>
+<pre><code>##               mz reporters group
+## iTRAQ4.116 116.1    iTRAQ4     B
+## iTRAQ4.117 117.1    iTRAQ4     B
+## iTRAQ4.114 114.1    iTRAQ4     A
+## iTRAQ4.115 115.1    iTRAQ4     A</code></pre>
+<p>Arrange rows/features and select feature variables</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">arrange</span>(charge) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(charge) <span class="op">%&gt;%</span>
+<span class="st">    </span>fData <span class="op">%&gt;%</span><span class="st"> </span>head</code></pre></div>
+<pre><code>##     charge
+## X1       2
+## X11      2
+## X12      2
+## X13      2
+## X14      2
+## X16      2</code></pre>
+</div>
+<div id="return-features-and-samples-with-matching-conditions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#return-features-and-samples-with-matching-conditions" class="anchor"></a>Return features and samples with matching conditions</h2>
+<p>Filter using feature variables</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(ProteinAccession <span class="op">==</span><span class="st"> "ENO"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs</code></pre></div>
+<pre><code>##       iTRAQ4.114  iTRAQ4.115  iTRAQ4.116  iTRAQ4.117
+## X27 147093.25030 94770.28613 42616.07457 21259.42497
+## X46   5369.73246  1148.32171          NA  1313.44599
+## X47   7384.83022  3935.30012  2370.02527  1115.75006
+## X55     15.11764    15.68074    14.23333    14.03018</code></pre>
+<p>Filter using phenotypic (samples) variables</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(group <span class="op">==</span><span class="st"> "A"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs <span class="op">%&gt;%</span>
+<span class="st">    </span>head</code></pre></div>
+<pre><code>##     iTRAQ4.114 iTRAQ4.115
+## X1   1347.6158  2247.3097
+## X10   739.9861   799.3501
+## X11 27638.3582 33394.0252
+## X12 31892.8928 33634.6980
+## X13 26143.7542 29677.4781
+## X14  6448.0829  6234.1957</code></pre>
+<p>Filter on both feature and sample variables</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(group <span class="op">==</span><span class="st"> "A"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(ProteinAccession <span class="op">==</span><span class="st"> "ENO"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs</code></pre></div>
+<pre><code>##       iTRAQ4.114  iTRAQ4.115
+## X27 147093.25030 94770.28613
+## X46   5369.73246  1148.32171
+## X47   7384.83022  3935.30012
+## X55     15.11764    15.68074</code></pre>
 </div>
 <div id="group-by-one-or-more-feature-or-sample-variables" class="section level2">
 <h2 class="hasAnchor">
@@ -482,9 +481,9 @@ msnset <span class="op">%&gt;%</span>
 </li>
       <li>
 <a href="#examples">Examples</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#order-data-by-it-feature-of-sample-variables">Order data by it feature of sample variables</a></li>
+<li><a href="#select-feature-or-sample-variables">Select feature or sample variables</a></li>
+      <li><a href="#order-data-by-it-feature-of-sample-variables">Order data by it feature of sample variables</a></li>
       <li><a href="#return-features-and-samples-with-matching-conditions">Return features and samples with matching conditions</a></li>
-      <li><a href="#select-feature-or-sample-variables">Select feature or sample variables</a></li>
       <li><a href="#group-by-one-or-more-feature-or-sample-variables">Group by one or more feature or sample variables</a></li>
       <li><a href="#summarise-the-expression-values-of-a-dataset">Summarise the expression values of a dataset</a></li>
       </ul>
