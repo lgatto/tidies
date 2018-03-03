@@ -92,63 +92,14 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 <span class="kw">dim</span>(msnset)</code></pre></div>
 <pre><code>## [1] 55  4</code></pre>
 <p>The expression data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exprs</span>(msnset)</code></pre></div>
-<pre><code>##       iTRAQ4.114  iTRAQ4.115  iTRAQ4.116  iTRAQ4.117
-## X1    1347.61584  2247.30975  3927.69307  7661.14628
-## X10    739.98608   799.35012   712.59830   940.67930
-## X11  27638.35819 33394.02524 32104.28786 26628.72776
-## X12  31892.89279 33634.69801 37674.72721 37227.71193
-## X13  26143.75416 29677.47813 29089.05931 27902.56076
-## X14   6448.08287  6234.19568  6902.89029  6437.23029
-## X15    722.29818  1058.87116   851.47016   944.62868
-## X16  10154.95328 10486.94267 11018.19118 11289.55202
-## X17   2800.39559  3244.97754  2965.31877  3184.19386
-## X18   4458.77171  4786.51826  4350.78472  4303.02563
-## X19  32838.04395 37066.05777 41429.62671 39700.47518
-## X2    3715.08932  4254.32256  4748.46152  5249.90356
-## X20  34509.68621 34928.74712 41911.03212 42843.83865
-## X21  21262.14754 23168.72913 25407.06847 25949.95404
-## X22   8635.31649 10036.52908  9254.43168  7769.74907
-## X23   1566.74773  1444.27953  1455.89659  1557.19896
-## X24   1101.06205  1124.16708  1140.09311  1191.80548
-## X25   5135.56011  5519.05329  5828.37084  5583.72953
-## X26   1524.14767  1399.89688  1547.21848  1563.22990
-## X27 147093.25030 94770.28613 42616.07457 21259.42497
-## X28  30047.24363 31498.21764 38489.80882 38275.26375
-## X29   9339.07912 10509.31520 10824.73863  9504.38777
-## X3    4483.31990  4873.99606  6743.44063  4601.37758
-## X30   1147.03795  1281.25856  1278.70097  1175.08044
-## X31  12682.55301 13586.68865 13579.17358 13067.36481
-## X32    508.17713   606.32085   725.66638   654.20259
-## X33    760.03204   866.44037   883.90995   791.32963
-## X34    658.83542   696.76216   603.12820   492.63404
-## X35   3086.44981  3266.41942  4093.80327  3905.62406
-## X36   2278.36612  2570.08001  2785.56562  2446.79895
-## X37   1259.18898  1448.37341  1653.74896  1261.52449
-## X38  11468.80365 12273.93798 12338.65631 11686.38167
-## X39    982.40174  1119.31558   880.69916  1100.37213
-## X4    1918.08242  1418.03978  1117.60113  1581.95396
-## X40   2052.00113  2582.21183  1918.57369  2258.36892
-## X41  17593.54759 18545.61972 19361.83670 18328.23650
-## X42   5852.66544  5964.39464  5970.36943  6006.85932
-## X43    872.45566   956.10275  1310.23148  1297.82407
-## X44   1157.48743   952.06210  1178.14071   899.01924
-## X45   1932.12004  2161.24030  2327.27156  2115.24632
-## X46   5369.73246  1148.32171          NA  1313.44599
-## X47   7384.83022  3935.30012  2370.02527  1115.75006
-## X48    796.22002   669.10772   979.78007   855.39249
-## X49   8504.48167  9924.07051 10058.26597  9611.86446
-## X5   15210.97924 15296.25571 15592.76007 16550.50179
-## X50   1400.19902  1300.18250  1492.60564  1490.85191
-## X51   7540.63726  7679.15758  7561.98334  8005.17654
-## X52   1593.43572  2927.41128  5028.29190 10362.14077
-## X53    184.67577   207.80235   515.05578   865.38161
-## X54   2092.47631  1993.87954  2371.34244  2620.85663
-## X55     15.11764    15.68074    14.23333    14.03018
-## X6    4133.10269  5069.98262  4724.84489  4694.80139
-## X7   11947.88077 13061.87498 12809.49141 12911.47853
-## X8    2770.37694  2907.22208  3055.51653  2946.79966
-## X9    3824.35623  3746.26739  4285.02115  3649.44422</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">exprs</span>(msnset))</code></pre></div>
+<pre><code>##     iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
+## X1   1347.6158  2247.3097  3927.6931  7661.1463
+## X10   739.9861   799.3501   712.5983   940.6793
+## X11 27638.3582 33394.0252 32104.2879 26628.7278
+## X12 31892.8928 33634.6980 37674.7272 37227.7119
+## X13 26143.7542 29677.4781 29089.0593 27902.5608
+## X14  6448.0829  6234.1957  6902.8903  6437.2303</code></pre>
 <p>The sample metadata:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pData</span>(msnset)</code></pre></div>
 <pre><code>##               mz reporters group
@@ -222,9 +173,10 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 ## # ... with 210 more rows</code></pre>
 </div>
 </div>
-<div id="examples" class="section level1">
+<div id="using-tidies" class="section level1">
 <h1 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h1>
+<a href="#using-tidies" class="anchor"></a>Using <code>tidies</code>
+</h1>
 <p>We start by loading the <code>tidies</code> package (which also automatically loads and attaches <em><a href="https://CRAN.R-project.org/package=magrittr">magrittr</a></em> for the <code>%&gt;%</code> operator).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"tidies"</span>)</code></pre></div>
 <div id="select-feature-or-sample-variables" class="section level2">
@@ -247,7 +199,7 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 ##  [7] "precursor.mz"        "precursor.intensity" "charge"             
 ## [10] "peaks.count"         "tic"                 "ionCount"           
 ## [13] "ms.level"            "acquisition.number"  "collision.energy"</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Select a feature variable
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Select a single feature variable
 msnset <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">select</span>(charge) <span class="op">%&gt;%</span>
 <span class="st">    </span>fvarLabels</code></pre></div>
@@ -456,8 +408,8 @@ msnset <span class="op">%&gt;%</span>
 ## X12 32763.7954 37451.2196
 ## X13 27910.6161 28495.8100
 ## X14  6341.1393  6670.0603</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Grouping by features and samples
-msnset <span class="op">%&gt;%</span>
+<p>Grouping by features and samples</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">group_by</span>(charge) <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">summarise</span>(<span class="kw">mean</span>(exprs)) <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
@@ -483,7 +435,7 @@ msnset <span class="op">%&gt;%</span>
       </ul>
 </li>
       <li>
-<a href="#examples">Examples</a><ul class="nav nav-pills nav-stacked">
+<a href="#using-tidies">Using <code>tidies</code></a><ul class="nav nav-pills nav-stacked">
 <li><a href="#select-feature-or-sample-variables">Select feature or sample variables</a></li>
       <li><a href="#order-data-by-it-feature-of-sample-variables">Order data by it feature of sample variables</a></li>
       <li><a href="#return-features-and-samples-with-matching-conditions">Return features and samples with matching conditions</a></li>

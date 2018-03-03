@@ -79,7 +79,7 @@ dim(msnset)
 The expression data:
 
 ```{r exprs}
-exprs(msnset)
+head(exprs(msnset))
 ```
 
 The sample metadata:
@@ -134,7 +134,7 @@ library("biobroom")
 tidy(msnset, addPheno = TRUE)
 ```
 
-# Examples
+# Using `tidies`
 
 We start by loading the `tidies` package (which also automatically
 loads and attaches `r CRANpkg("magrittr")` for the `%>%` operator).
@@ -159,7 +159,7 @@ Select feature variables (updates only the feature data)
 ## All feature variables
 fvarLabels(msnset)
 
-## Select a feature variable
+## Select a single feature variable
 msnset %>%
 	select(charge) %>%
 	fvarLabels
@@ -271,12 +271,16 @@ msnset %>% group_by(ProteinAccession) %>%
 
 Grouping and summarising by samples
 
-```{r summerise2}
+```{r summarise2}
 msnset %>% group_by(group) %>%
 	summarise(mean(exprs, na.rm = TRUE)) %>%
 	exprs %>%
 	head
-## Grouping by features and samples
+```
+
+Grouping by features and samples
+
+```{r summarise3}
 msnset %>%
 	group_by(charge) %>%
 	summarise(mean(exprs)) %>%
