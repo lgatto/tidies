@@ -197,6 +197,29 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 <li><p>Each of the adapted tidy function to use and return tidy <code>eSet</code> data.</p></li>
 </ul>
 </div>
+<div id="the-tidies-package" class="section level2">
+<h2 class="hasAnchor">
+<a href="#the-tidies-package" class="anchor"></a>The <code>tidies</code> package</h2>
+<p>The goal of this package is to support the <code>dplyr</code> function such as <code>select</code>, <code>filter</code>, <code>group_by</code>, <code>summarise</code>, … direcly on omics data containers described above. The function act on the respective variable and expression slots and preserve the object’s class.</p>
+<p>Another approach is to convert the omics objects to tidy <code>tibbles</code> and work direcly with these. This can easily be done with the Bioconductor <em><a href="http://bioconductor.org/packages/biobroom">biobroom</a></em> package, that will convert the 55 features by 4 samples into a 220 tibble:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"biobroom"</span>)</code></pre></div>
+<pre><code>## Loading required package: broom</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tidy</span>(msnset, <span class="dt">addPheno =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## # A tibble: 220 x 6
+##    protein sample        mz reporters group  value
+##    &lt;fct&gt;   &lt;fct&gt;      &lt;dbl&gt; &lt;fct&gt;     &lt;chr&gt;  &lt;dbl&gt;
+##  1 X1      iTRAQ4.114  114. iTRAQ4    A      1348.
+##  2 X10     iTRAQ4.114  114. iTRAQ4    A       740.
+##  3 X11     iTRAQ4.114  114. iTRAQ4    A     27638.
+##  4 X12     iTRAQ4.114  114. iTRAQ4    A     31893.
+##  5 X13     iTRAQ4.114  114. iTRAQ4    A     26144.
+##  6 X14     iTRAQ4.114  114. iTRAQ4    A      6448.
+##  7 X15     iTRAQ4.114  114. iTRAQ4    A       722.
+##  8 X16     iTRAQ4.114  114. iTRAQ4    A     10155.
+##  9 X17     iTRAQ4.114  114. iTRAQ4    A      2800.
+## 10 X18     iTRAQ4.114  114. iTRAQ4    A      4459.
+## # ... with 210 more rows</code></pre>
+</div>
 </div>
 <div id="examples" class="section level1">
 <h1 class="hasAnchor">
@@ -454,6 +477,7 @@ msnset <span class="op">%&gt;%</span>
 <a href="#introduction">Introduction</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#high-throughput-data-and-the-eset-class">High throughput data and the <code>eSet</code> class</a></li>
       <li><a href="#tidy-tools">Tidy tools</a></li>
+      <li><a href="#the-tidies-package">The <code>tidies</code> package</a></li>
       </ul>
 </li>
       <li>

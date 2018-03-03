@@ -19,6 +19,7 @@ suppressPackageStartupMessages(library("MSnbase"))
 ```
 
 # Introduction
+
 The `tidies` package (from to contraction of *tidy* `eSet`) implements
 tidy principles as defined in
 the [tidyverse](https://www.tidyverse.org/) packages to omics-type
@@ -114,6 +115,24 @@ application to omics data are
 
 - Each of the adapted tidy function to use and return tidy `eSet`
   data.
+
+## The `tidies` package
+
+The goal of this package is to support the `dplyr` function such as
+`select`, `filter`, `group_by`, `summarise`, ... direcly on omics data
+containers described above. The function act on the respective
+variable and expression slots and preserve the object's class.
+
+Another approach is to convert the omics objects to tidy `tibbles` and
+work direcly with these. This can easily be done with the Bioconductor
+`r Biocpkg("biobroom")` package, that will convert the
+`r nrow(msnset)` features by `r ncol(msnset)` samples into a
+`r prod(dim(msnset))` tibble:
+
+```{r biobroom}
+library("biobroom")
+tidy(msnset, addPheno = TRUE)
+```
 
 # Examples
 
