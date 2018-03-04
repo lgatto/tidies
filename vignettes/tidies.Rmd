@@ -134,6 +134,26 @@ library("biobroom")
 tidy(msnset, addPheno = TRUE)
 ```
 
+Using `biobroom::tidy` drops the feature data that, sometimes, is
+important. It is possible to create a `tibble` that contains these
+metadata using the following approach:
+
+Combine the expression data and the feature data into a single *wide*
+dataframe using `ms2df`
+
+```{r ms2df}
+x <- MSnbase::ms2df(msnset)
+```
+
+which then can be converted to a long, tidy, form
+
+```{r gather}
+
+```
+
+This is the general principal that is applied, internally, in the
+`tidies` functions.
+
 # Using `tidies`
 
 We start by loading the `tidies` package (which also automatically
