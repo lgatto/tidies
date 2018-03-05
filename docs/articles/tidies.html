@@ -171,6 +171,12 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 ##  9 X17     iTRAQ4.114  114. iTRAQ4    A      2800.
 ## 10 X18     iTRAQ4.114  114. iTRAQ4    A      4459.
 ## # ... with 210 more rows</code></pre>
+<p>Using <code>biobroom::tidy</code> drops the feature data that, sometimes, is important. It is possible to create a <code>tibble</code> that contains these metadata using the following approach:</p>
+<p>Combine the expression data and the feature data into a single <em>wide</em> dataframe using <code>ms2df</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>MSnbase<span class="op">::</span><span class="kw">ms2df</span>(msnset)</code></pre></div>
+<p>which then can be converted to a long, tidy, form</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## <span class="al">TODO</span></code></pre></div>
+<p>This is the general principal that is applied, internally, in the <code>tidies</code> functions.</p>
 </div>
 </div>
 <div id="using-tidies" class="section level1">
