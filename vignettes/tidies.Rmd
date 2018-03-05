@@ -135,24 +135,28 @@ tidy(msnset, addPheno = TRUE)
 ```
 
 Using `biobroom::tidy` drops the feature data that, sometimes, is
-important. It is possible to create a `tibble` that contains these
-metadata using the following approach:
-
-Combine the expression data and the feature data into a single *wide*
-dataframe using `ms2df`
+important. It is possible to create dataframe that contains these
+metadata using the following approach. First, combine the expression
+data and the feature data into a single *wide* dataframe using `ms2df`
 
 ```{r ms2df}
 x <- MSnbase::ms2df(msnset)
 ```
 
-which then can be converted to a long, tidy, form
+which then can be converted to a long, tidy, form with
 
 ```{r gather}
-## TODO
+fv <- fvarLabels(msnset)
+library("tidyr")
+x <- tidyr::gather(x, sample, exprs, -fv)
+head(x)
 ```
 
-This is the general principal that is applied, internally, in the
-`tidies` functions.
+to produce a dataframe with `r nrow(x)` rows corresponding to the
+original `r nrow(msnset)` features for the `r ncol(exprs(msnset))`
+samples, and, for each of these, the corresponding feature
+metadata. This is the general principal that is applied, internally,
+in the `tidies` functions.
 
 # Using `tidies`
 

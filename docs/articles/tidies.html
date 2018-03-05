@@ -171,12 +171,42 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 ##  9 X17     iTRAQ4.114  114. iTRAQ4    A      2800.
 ## 10 X18     iTRAQ4.114  114. iTRAQ4    A      4459.
 ## # ... with 210 more rows</code></pre>
-<p>Using <code>biobroom::tidy</code> drops the feature data that, sometimes, is important. It is possible to create a <code>tibble</code> that contains these metadata using the following approach:</p>
-<p>Combine the expression data and the feature data into a single <em>wide</em> dataframe using <code>ms2df</code></p>
+<p>Using <code>biobroom::tidy</code> drops the feature data that, sometimes, is important. It is possible to create dataframe that contains these metadata using the following approach. First, combine the expression data and the feature data into a single <em>wide</em> dataframe using <code>ms2df</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>MSnbase<span class="op">::</span><span class="kw">ms2df</span>(msnset)</code></pre></div>
-<p>which then can be converted to a long, tidy, form</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## <span class="al">TODO</span></code></pre></div>
-<p>This is the general principal that is applied, internally, in the <code>tidies</code> functions.</p>
+<p>which then can be converted to a long, tidy, form with</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fv &lt;-<span class="st"> </span><span class="kw">fvarLabels</span>(msnset)
+<span class="kw">library</span>(<span class="st">"tidyr"</span>)
+x &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw">gather</span>(x, sample, exprs, <span class="op">-</span>fv)
+<span class="kw">head</span>(x)</code></pre></div>
+<pre><code>##   spectrum ProteinAccession                       ProteinDescription
+## 1        1              BSA                     bovine serum albumin
+## 2       10          ECA1422 glucose-1-phosphate cytidylyltransferase
+## 3       11          ECA4030         50S ribosomal subunit protein L4
+## 4       12          ECA3882                   chaperone protein DnaK
+## 5       13          ECA1364      succinyl-CoA synthetase alpha chain
+## 6       14          ECA0871              NADP-dependent malic enzyme
+##   PeptideSequence file retention.time precursor.mz precursor.intensity
+## 1          NYQEAK    1        1149.31     520.7833             3449020
+## 2 VTLVDTGEHSMTGGR    1        1503.03     573.9539             7849420
+## 3           SPIWR    1        1663.61     401.7392            41253600
+## 4        TAIDDALK    1        1663.86     567.8339            23549500
+## 5          SILINK    1        1664.08     488.3269            13025200
+## 6    DFEVVNNESDPR    1        1664.32     782.8715            18405000
+##   charge peaks.count tic  ionCount ms.level acquisition.number
+## 1      2        1922   0  26413754        2                  2
+## 2      3        1376   0  24482281        2                 11
+## 3      2        1571   0 231075934        2                 12
+## 4      2        2397   0 247323187        2                 13
+## 5      2        2574   0 207247502        2                 14
+## 6      2        1829   0 115317275        2                 15
+##   collision.energy     sample      exprs
+## 1               40 iTRAQ4.114  1347.6158
+## 2               40 iTRAQ4.114   739.9861
+## 3               40 iTRAQ4.114 27638.3582
+## 4               40 iTRAQ4.114 31892.8928
+## 5               40 iTRAQ4.114 26143.7542
+## 6               40 iTRAQ4.114  6448.0829</code></pre>
+<p>to produce a dataframe with 220 rows corresponding to the original 55 features for the 4 samples, and, for each of these, the corresponding feature metadata. This is the general principal that is applied, internally, in the <code>tidies</code> functions.</p>
 </div>
 </div>
 <div id="using-tidies" class="section level1">
