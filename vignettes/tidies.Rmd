@@ -102,7 +102,7 @@ definition
 and
 [tidy tools manifesto](http://tidyverse.tidyverse.org/articles/manifesto.html) and
 lay out the principles that packages in the tidyverse
-package. `tidies` isn't part of the this `tidyvers`, but aims at
+package. `tidies` isn't part of the `tidyverse`, but aims at
 applying these same principles. The concepts that are relevant for the
 application to omics data are
 
