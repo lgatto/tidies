@@ -15,7 +15,7 @@ LazyData: true
 VignetteBuilder: knitr
 BugReports: https://github.com/lgatto/tidies/issues
 URL: https://github.com/lgatto/tidies
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Collate:
     'DataClasses.R'
     'tidies.R'
