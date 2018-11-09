@@ -38,7 +38,7 @@ biocLite("lgatto/tidies")
 
 ## Questions
 
-Please ask question, report bugs and suggest improvememt by opening a
+Please ask question, report bugs and suggest improvements by opening a
 GitHub [issue](https://github.com/lgatto/tidies/issues).
 
 ## Contributing
