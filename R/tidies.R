@@ -10,4 +10,5 @@
 ##'
 ##' @rdname tidies
 ##' @import Biobase MSnbase dplyr methods
+##' @importFrom tibble as_tibble
 "_PACKAGE"

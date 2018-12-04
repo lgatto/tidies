@@ -1,13 +1,13 @@
 Package: tidies
 Title: A Grammar of Data Manipulation for Omics Experiments
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: person("Laurent", "Gatto",
-		  email = "lg390@cam.ac.uk",
-		  role = c("aut", "cre"))
+                  email = "lg390@cam.ac.uk",
+                  role = c("aut", "cre"))
 Description: Implementing the dplyr grammar of data manipulation for
-	     eSet-based high troughput omics data.
+             eSet-based high troughput omics data.
 Depends: R (>= 3.4.0), Biobase, MSnbase, dplyr, methods
-Imports: tidyr
+Imports: tidyr, tibble
 Suggests: knitr, BiocStyle, biobroom
 License: Artistic-2.0
 Encoding: UTF-8
@@ -25,3 +25,4 @@ Collate:
     'select.R'
     'slice.R'
     'summarise.R'
+    'tibble.R'
