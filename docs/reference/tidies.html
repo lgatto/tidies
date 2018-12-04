@@ -65,7 +65,7 @@ least), an emphasis on quantitative proteomics data." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidies</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.3</span>
       </span>
     </div>
 
@@ -108,7 +108,7 @@ least), an emphasis on quantitative proteomics data." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>A Grammar of Data Manipulation for Quantitative Proteomics</h1>
-    <small class="dont-index">Source: <a href='https://github.com/lgatto/tidies/blob/master/R/tidies.R'><code>R/tidies.R</code></a>, <a href='https://github.com/lgatto/tidies/blob/master/R/arrange.R'><code>R/arrange.R</code></a>, <a href='https://github.com/lgatto/tidies/blob/master/R/filter.R'><code>R/filter.R</code></a>, and 4 more</small>
+    <small class="dont-index">Source: <a href='https://github.com/lgatto/tidies/blob/master/R/tidies.R'><code>R/tidies.R</code></a>, <a href='https://github.com/lgatto/tidies/blob/master/R/arrange.R'><code>R/arrange.R</code></a>, <a href='https://github.com/lgatto/tidies/blob/master/R/filter.R'><code>R/filter.R</code></a>, and 5 more</small>
     <div class="hidden name"><code>tidies.Rd</code></div>
     </div>
 
@@ -133,26 +133,38 @@ least), an emphasis on quantitative proteomics data.</p>
 <span class='fu'>select</span>(<span class='no'>.data</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for Grouped_eSet</span>
-<span class='fu'>summarise</span>(<span class='no'>.data</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>summarise</span>(<span class='no'>.data</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for MSnSet</span>
+<span class='fu'>as_tibble</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>fcols</span> <span class='kw'>=</span> <span class='fu'>fvarLabels</span>(<span class='no'>x</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.data</th>
-      <td><p>An object of class [MSnbase::MSnSet].</p></td>
+      <td><p>An object of class <a href='https://www.rdocumentation.org/packages/MSnbase/topics/MSnSet-class'>MSnbase::MSnSet</a>.</p></td>
     </tr>
     <tr>
       <th>...</th>
       <td><p>Expressions evaluated in the context of the object's
-feature and sample variable and passed to the `dplyr`
-functions.</p></td>
+feature and sample variable and passed to the <code>dplyr</code>
+functions. Ignored in <code>as_tibble,MSnSet</code>.</p></td>
     </tr>
     <tr>
       <th>add</th>
       <td><p>As in the original `dplyr::group_by`function, when ‘add
 = FALSE’, the default, `group_by()` will override existing
 groups. To add to the existing groups, use `add = TRUE`.</p></td>
+    </tr>
+    <tr>
+      <th>x</th>
+      <td><p>An object of class <code>MSnSet</code>.</p></td>
+    </tr>
+    <tr>
+      <th>fcols</th>
+      <td><p>Feature variables to be added. Default is to add all
+(i.e. <code>fvarLabels(x)</code>). Use <code>NULL</code> to add none.</p></td>
     </tr>
     </table>
     
