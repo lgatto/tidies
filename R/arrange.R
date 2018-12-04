@@ -3,7 +3,8 @@
 ##' @param .data An object of class [MSnbase::MSnSet].
 ##' @param ...  Expressions evaluated in the context of the object's
 ##'     feature and sample variable and passed to the `dplyr`
-##'     functions.
+##'     functions. Ignored in `as_tibble,MSnSet`.
+##' @md
 arrange.eSet <- function(.data, ...) {
     fd <- fData(.data)
     fd$.__featureNames__ <- featureNames(.data)

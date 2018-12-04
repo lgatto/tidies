@@ -10,7 +10,7 @@
 \alias{group_by.eSet}
 \alias{select.eSet}
 \alias{summarise.Grouped_eSet}
-\alias{as_tibble.eSet}
+\alias{as_tibble.MSnSet}
 \title{A Grammar of Data Manipulation for Quantitative Proteomics}
 \usage{
 \method{arrange}{eSet}(.data, ...)
@@ -23,14 +23,14 @@
 
 \method{summarise}{Grouped_eSet}(.data, ...)
 
-\method{as_tibble}{eSet}(x, ..., fcols = fvarLabels(x))
+\method{as_tibble}{MSnSet}(x, ..., fcols = fvarLabels(x))
 }
 \arguments{
-\item{.data}{An object of class [MSnbase::MSnSet].}
+\item{.data}{An object of class \link[MSnbase:MSnSet]{MSnbase::MSnSet}.}
 
 \item{...}{Expressions evaluated in the context of the object's
-feature and sample variable and passed to the `dplyr`
-functions.}
+feature and sample variable and passed to the \code{dplyr}
+functions. Ignored in \code{as_tibble,MSnSet}.}
 
 \item{add}{As in the original `dplyr::group_by`function, when ‘add
 = FALSE’, the default, `group_by()` will override existing
@@ -40,9 +40,6 @@ groups. To add to the existing groups, use `add = TRUE`.}
 
 \item{fcols}{Feature variables to be added. Default is to add all
 (i.e. \code{fvarLabels(x)}). Use \code{NULL} to add none.}
-
-\item{...}{Other arguments passed on to individual methods. Ignore
-here.}
 }
 \description{
 The `tidyms` package implements tidy principles as defined in the
