@@ -7,6 +7,8 @@ select.eSet <- function(.data, ...) {
         fData(.data) <- ftbl
     } else if (!inherits(ptbl, "try-error")) {
         pData(.data) <- ptbl
+    } else {
+        stop("variable(s) not found.")
     }
     .data
 }
