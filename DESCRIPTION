@@ -1,6 +1,6 @@
 Package: tidies
 Title: A Grammar of Data Manipulation for Omics Experiments
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: person("Laurent", "Gatto",
 		  email = "lg390@cam.ac.uk",
 		  role = c("aut", "cre"))
