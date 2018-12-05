@@ -75,20 +75,20 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#a-grammar-of-data-manipulation-for-omics-data" class="anchor"></a>A Grammar of Data Manipulation for Omics Data</h1></div>
 <p>The <code>tidies</code> package implements tidy principles as defined in the <a href="https://www.tidyverse.org/">tidyverse</a> packages to omics-type data classes, with (currently at least), an emphasis on quantitative proteomics data.</p>
-<p>Details and examples are provides in the <a href="https://lgatto.github.io/tidies/articles/tidies.html">vignette</a>.</p>
+<p>Details and examples are provides in the <a href="https://lgatto.github.io/tidies/articles/tidies.html">vignette</a>. See also my <a href="http://bit.ly/tidies-eurobioc18">slides</a> for the EuroBioc2018 conference.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>First, install the <a href="https://bioconductor.org/">Bioconductor</a> dependencies. If you haven’t installed any Bioconductor packages before, bootstrap the package installations with</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">## try http:// if https:// URLs are not supported</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/source">source</a></span>(<span class="st">"https://bioconductor.org/biocLite.R"</span>)</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">biocLite</span>()</a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"BiocInstaller"</span>)</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/BiocInstaller/topics/biocLite">biocLite</a></span>(<span class="st">"MSnbase"</span>)</a></code></pre></div>
-<p>In case it isn’t installed yet, please install <code>dplyr</code> and <code>tidyr</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"dplyr"</span>, <span class="st">"tidyr"</span>))</a></code></pre></div>
+<p>First, install the <a href="https://bioconductor.org/">Bioconductor</a> dependencies using the <code>BiocManager</code> package, that can be installed from CRAN with <code>install.packages</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="cf">if</span> (<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/ns-load">requireNamespace</a></span>(<span class="st">"BiocManager"</span>, <span class="dt">quietly =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb1-2" title="2">    <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"BiocManager"</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3">BiocManager<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/BiocManager/topics/install">install</a></span>(<span class="st">"MSnbase"</span>)</a></code></pre></div>
+<p>In case they aren’t installed yet, please install <code>dplyr</code>, <code>tibble</code> and <code>tidyr</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"dplyr"</span>, <span class="st">"tidyr"</span>, <span class="st">"tibble"</span>))</a></code></pre></div>
+<p>Or just go agread and install the full tidyverse:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"tidyverse"</span>)</a></code></pre></div>
 <p>You can now install the <code>tidies</code> package from github with:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/BiocInstaller/topics/biocLite">biocLite</a></span>(<span class="st">"lgatto/tidies"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">BiocManager<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/BiocManager/topics/install">install</a></span>(<span class="st">"lgatto/tidies"</span>)</a></code></pre></div>
 </div>
 <div id="questions" class="section level2">
 <h2 class="hasAnchor">
