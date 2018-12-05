@@ -10,7 +10,7 @@
 \alias{group_by.eSet}
 \alias{select.eSet}
 \alias{summarise.Grouped_eSet}
-\alias{as_tibble.MSnSet}
+\alias{as_tibble.eSet}
 \title{A Grammar of Data Manipulation for Quantitative Proteomics}
 \usage{
 \method{arrange}{eSet}(.data, ...)
@@ -23,7 +23,7 @@
 
 \method{summarise}{Grouped_eSet}(.data, ...)
 
-\method{as_tibble}{MSnSet}(x, ..., fcols = fvarLabels(x))
+\method{as_tibble}{eSet}(x, ..., fcols = fvarLabels(x))
 }
 \arguments{
 \item{.data}{An object of class \link[MSnbase:MSnSet]{MSnbase::MSnSet}.}

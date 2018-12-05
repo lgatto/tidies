@@ -6,7 +6,7 @@
 ##'     (i.e. `fvarLabels(x)`). Use `NULL` to add none.
 ##' @export
 ##' @md
-as_tibble.MSnSet <- function(x, ..., fcols = fvarLabels(x)) {
+as_tibble.eSet <- function(x, ..., fcols = fvarLabels(x)) {
     x <- MSnbase::ms2df(x, fcols = fcols)
     if (!is.null(fcols)) res <- tidyr::gather(x, sample, exprs, -fcols)
     else res <- tidyr::gather(x, sample, exprs)
