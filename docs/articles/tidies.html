@@ -101,15 +101,15 @@
 </div>
 <p>The coordinated nature of the high throughput data guarantees that the dimensions of the different slots will always match (i.e the columns in the expression data and then rows in the sample metadata, as well as the rows in the expression data and feature metadata) during data manipulation. The metadata slots can grow additional co-variates (columns) without affecting the other structures.</p>
 <p>To illustrate such an omics data container, we’ll make use of the <code>msnset</code> object that comes with the <em><a href="https://bioconductor.org/packages/3.8/MSnbase">MSnbase</a></em> package, which contains data for 55 features and 4 samples.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"MSnbase"</span>)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(msnset)</a>
-<a class="sourceLine" id="cb1-3" title="3"></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co">## Some test sample groups</span></a>
-<a class="sourceLine" id="cb1-5" title="5">msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>)</a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/MSnbase/topics/pSet-class">dim</a></span>(msnset)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"MSnbase"</span>)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(msnset)
+
+## Some test sample groups
+msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/MSnbase/topics/pSet-class">dim</a></span>(msnset)</code></pre></div>
 <pre><code>## [1] 55  4</code></pre>
 <p>The expression data:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw">exprs</span>(msnset))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw">exprs</span>(msnset))</code></pre></div>
 <pre><code>##     iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
 ## X1   1347.6158  2247.3097  3927.6931  7661.1463
 ## X10   739.9861   799.3501   712.5983   940.6793
@@ -118,14 +118,14 @@
 ## X13 26143.7542 29677.4781 29089.0593 27902.5608
 ## X14  6448.0829  6234.1957  6902.8903  6437.2303</code></pre>
 <p>The sample metadata:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">pData</span>(msnset)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pData</span>(msnset)</code></pre></div>
 <pre><code>##               mz reporters group
 ## iTRAQ4.114 114.1    iTRAQ4     A
 ## iTRAQ4.115 115.1    iTRAQ4     A
 ## iTRAQ4.116 116.1    iTRAQ4     B
 ## iTRAQ4.117 117.1    iTRAQ4     B</code></pre>
 <p>The feature metadata:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">fData</span>(msnset)[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fData</span>(msnset)[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</code></pre></div>
 <pre><code>##     spectrum ProteinAccession                       ProteinDescription
 ## X1         1              BSA                     bovine serum albumin
 ## X10       10          ECA1422 glucose-1-phosphate cytidylyltransferase
@@ -148,8 +148,8 @@
 ## X16        VMLQAYDEGR    1
 ## X17     ANAVVLATGGAGR    1
 ## X18         VATPEWQSK    1</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co">## all feature variables</span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="kw">fvarLabels</span>(msnset)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## all feature variables
+<span class="kw">fvarLabels</span>(msnset)</code></pre></div>
 <pre><code>##  [1] "spectrum"            "ProteinAccession"    "ProteinDescription" 
 ##  [4] "PeptideSequence"     "file"                "retention.time"     
 ##  [7] "precursor.mz"        "precursor.intensity" "charge"             
@@ -159,11 +159,11 @@
 <div id="tidy-tools" class="section level2">
 <h2 class="hasAnchor">
 <a href="#tidy-tools" class="anchor"></a>Tidy tools</h2>
-<p>The <a href="https://www.jstatsoft.org/article/view/v059i10"><em>tidy data</em></a> definition and <a href="http://tidyverse.tidyverse.org/articles/manifesto.html">tidy tools manifesto</a> and lay out the principles that packages in the tidyverse package. <code>tidies</code> isn’t part of the <code>tidyverse</code>, but aims at applying these same principles. The concepts that are relevant for the application to omics data are</p>
+<p>The <a href="https://www.jstatsoft.org/article/view/v059i10"><em>tidy data</em></a> definition and <a href="http://tidyverse.tidyverse.org/articles/manifesto.html">tidy tools manifesto</a> lay out the principles that packages in the tidyverse package. <code>tidies</code> isn’t part of the <code>tidyverse</code>, but aims at applying these same principles. The concepts that are relevant for the application to omics data are</p>
 <ul>
 <li><p>Reuse of existing data structures; in this case <code>eSet</code> objects, that constitute our <em>tidy</em> omics data.</p></li>
-<li><p>Compose simple functions with the pipe; here we apply the widely used <em><a href="https://CRAN.R-project.org/package=dplyr">dplyr</a></em> functions and <em><a href="https://CRAN.R-project.org/package=magrittr">magrittr</a></em> <code>%&gt;%</code> operator.</p></li>
-<li><p>Each of the adapted tidy function to use and return tidy <code>eSet</code> data.</p></li>
+<li><p>Compose simple functions with the pipe; here we apply the widely used <em><a href="https://CRAN.R-project.org/package=dplyr">dplyr</a></em> functions and <em><a href="https://CRAN.R-project.org/package=magrittr">magrittr</a></em> <code>%&gt;%</code> operator. Each of the adapted tidy function to use and return tidy <code>eSet</code> data.</p></li>
+<li><p>Keep the ability to use existing Bioconductor functions that operate on the <code>eSet</code> class; this assumes that these functions are tidy themselves, i.e. that they return an <code>eSet</code> object.</p></li>
 </ul>
 </div>
 <div id="the-tidies-package" class="section level2">
@@ -171,9 +171,9 @@
 <a href="#the-tidies-package" class="anchor"></a>The <code>tidies</code> package</h2>
 <p>The goal of this package is to support the <code>dplyr</code> function such as <code>select</code>, <code>filter</code>, <code>group_by</code>, <code>summarise</code>, … direcly on omics data containers described above. The function act on the respective variable and expression slots and preserve the object’s class.</p>
 <p>Another approach is to convert the omics objects to tidy <code>tibbles</code> and work direcly with these. This can easily be done with the Bioconductor <em><a href="https://bioconductor.org/packages/3.8/biobroom">biobroom</a></em> package, that will convert the 55 features by 4 samples into a 220 tibble:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"biobroom"</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"biobroom"</span>)</code></pre></div>
 <pre><code>## Loading required package: broom</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">tidy</span>(msnset, <span class="dt">addPheno =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tidy</span>(msnset, <span class="dt">addPheno =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <pre><code>## # A tibble: 220 x 6
 ##    protein sample        mz reporters group  value
 ##    &lt;fct&gt;   &lt;fct&gt;      &lt;dbl&gt; &lt;fct&gt;     &lt;chr&gt;  &lt;dbl&gt;
@@ -189,17 +189,17 @@
 ## 10 X18     iTRAQ4.114  114. iTRAQ4    A      4459.
 ## # ... with 210 more rows</code></pre>
 <p>Using <code>biobroom::tidy</code> drops the feature data that, sometimes, is important. It is possible to create dataframe that contains these metadata using the following approach. First, combine the expression data and the feature data into a single <em>wide</em> dataframe using <code>ms2df</code></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">x &lt;-<span class="st"> </span>MSnbase<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/MSnbase/topics/MSnSet-class">ms2df</a></span>(msnset)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>MSnbase<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/MSnbase/topics/MSnSet-class">ms2df</a></span>(msnset)</code></pre></div>
 <p>which then can be converted to a long, tidy, form with</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">fv &lt;-<span class="st"> </span><span class="kw">fvarLabels</span>(msnset)</a>
-<a class="sourceLine" id="cb16-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tidyr"</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fv &lt;-<span class="st"> </span><span class="kw">fvarLabels</span>(msnset)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tidyr"</span>)</code></pre></div>
 <pre><code>## 
 ## Attaching package: 'tidyr'</code></pre>
 <pre><code>## The following object is masked from 'package:S4Vectors':
 ## 
 ##     expand</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">x &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span>(x, sample, exprs, <span class="op">-</span>fv)</a>
-<a class="sourceLine" id="cb19-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(x)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/tidyr/topics/gather">gather</a></span>(x, sample, exprs, <span class="op">-</span>fv)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(x)</code></pre></div>
 <pre><code>##   spectrum ProteinAccession                       ProteinDescription
 ## 1        1              BSA                     bovine serum albumin
 ## 2       10          ECA1422 glucose-1-phosphate cytidylyltransferase
@@ -229,7 +229,7 @@
 ## 5               40 iTRAQ4.114 26143.7542
 ## 6               40 iTRAQ4.114  6448.0829</code></pre>
 <p>to produce a dataframe with 220 rows corresponding to the original 55 features for the 4 samples, and, for each of these, the corresponding feature metadata.</p>
-<p>Given that this coercion is often useful, it is implemented in <code>as_tibble</code>.</p>
+<p>Given that this coercion is often useful, it is implemented in <code>as_tibble</code> (see the example below).</p>
 </div>
 </div>
 <div id="using-tidies" class="section level1">
@@ -237,41 +237,42 @@
 <a href="#using-tidies" class="anchor"></a>Using <code>tidies</code>
 </h1>
 <p>We start by loading the <code>tidies</code> package (which also automatically loads and attaches <em><a href="https://CRAN.R-project.org/package=magrittr">magrittr</a></em> for the <code>%&gt;%</code> operator).</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tidies"</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tidies"</span>)</code></pre></div>
 <div id="select-feature-or-sample-variables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#select-feature-or-sample-variables" class="anchor"></a>Select feature or sample variables</h2>
 <p>Select sample variables (updates only the phenotypic data)</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">msnset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-2" title="2"><span class="st">    </span><span class="kw">select</span>(group) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-3" title="3"><span class="st">    </span>pData</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(group) <span class="op">%&gt;%</span>
+<span class="st">    </span>pData</code></pre></div>
 <pre><code>##            group
 ## iTRAQ4.114     A
 ## iTRAQ4.115     A
 ## iTRAQ4.116     B
 ## iTRAQ4.117     B</code></pre>
+<p>Note that the output of <code>select(group)</code> is an <code>MSnSet</code> - we pipe it directly into <code>pData</code> to demonstrate that only that variable was retained.</p>
 <p>Select feature variables (updates only the feature data)</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="co">## All feature variables</span></a>
-<a class="sourceLine" id="cb24-2" title="2"><span class="kw">fvarLabels</span>(msnset)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## All feature variables
+<span class="kw">fvarLabels</span>(msnset)</code></pre></div>
 <pre><code>##  [1] "spectrum"            "ProteinAccession"    "ProteinDescription" 
 ##  [4] "PeptideSequence"     "file"                "retention.time"     
 ##  [7] "precursor.mz"        "precursor.intensity" "charge"             
 ## [10] "peaks.count"         "tic"                 "ionCount"           
 ## [13] "ms.level"            "acquisition.number"  "collision.energy"</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="co">## Select a single feature variable</span></a>
-<a class="sourceLine" id="cb26-2" title="2">msnset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb26-3" title="3"><span class="st">    </span><span class="kw">select</span>(charge) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb26-4" title="4"><span class="st">    </span>fvarLabels</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Select a single feature variable
+msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(charge) <span class="op">%&gt;%</span>
+<span class="st">    </span>fvarLabels</code></pre></div>
 <pre><code>## [1] "charge"</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="co">## Select features using a pattern</span></a>
-<a class="sourceLine" id="cb28-2" title="2">msnset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb28-3" title="3"><span class="st">    </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">"Protein"</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb28-4" title="4"><span class="st">    </span>fvarLabels</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Select features using a pattern
+msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">"Protein"</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span>fvarLabels</code></pre></div>
 <pre><code>## [1] "ProteinAccession"   "ProteinDescription"</code></pre>
 <p>Select sample and feature variables</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">msnset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb30-2" title="2"><span class="st">    </span><span class="kw">select</span>(group) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb30-3" title="3"><span class="st">    </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">"Prot"</span>))</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(group) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">"Prot"</span>))</code></pre></div>
 <pre><code>## MSnSet (storageMode: lockedEnvironment)
 ## assayData: 55 features, 4 samples 
 ##   element names: exprs 
@@ -295,19 +296,19 @@
 <h2 class="hasAnchor">
 <a href="#order-data-by-it-feature-of-sample-variables" class="anchor"></a>Order data by it feature of sample variables</h2>
 <p>Arrange columns/samples</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">msnset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb32-2" title="2"><span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(group)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb32-3" title="3"><span class="st">    </span>pData</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(group)) <span class="op">%&gt;%</span>
+<span class="st">    </span>pData</code></pre></div>
 <pre><code>##               mz reporters group
 ## iTRAQ4.116 116.1    iTRAQ4     B
 ## iTRAQ4.117 117.1    iTRAQ4     B
 ## iTRAQ4.114 114.1    iTRAQ4     A
 ## iTRAQ4.115 115.1    iTRAQ4     A</code></pre>
 <p>Arrange rows/features and select feature variables</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">msnset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb34-2" title="2"><span class="st">    </span><span class="kw">arrange</span>(charge) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb34-3" title="3"><span class="st">    </span><span class="kw">select</span>(charge) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb34-4" title="4"><span class="st">    </span>fData <span class="op">%&gt;%</span><span class="st"> </span>head</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">arrange</span>(charge) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(charge) <span class="op">%&gt;%</span>
+<span class="st">    </span>fData <span class="op">%&gt;%</span><span class="st"> </span>head</code></pre></div>
 <pre><code>##     charge
 ## X1       2
 ## X11      2
@@ -320,19 +321,19 @@
 <h2 class="hasAnchor">
 <a href="#return-features-and-samples-with-matching-conditions" class="anchor"></a>Return features and samples with matching conditions</h2>
 <p>Filter using feature variables</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">msnset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb36-2" title="2"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(ProteinAccession <span class="op">==</span><span class="st"> "ENO"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb36-3" title="3"><span class="st">    </span>exprs</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(ProteinAccession <span class="op">==</span><span class="st"> "ENO"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs</code></pre></div>
 <pre><code>##       iTRAQ4.114  iTRAQ4.115  iTRAQ4.116  iTRAQ4.117
 ## X27 147093.25030 94770.28613 42616.07457 21259.42497
 ## X46   5369.73246  1148.32171          NA  1313.44599
 ## X47   7384.83022  3935.30012  2370.02527  1115.75006
 ## X55     15.11764    15.68074    14.23333    14.03018</code></pre>
 <p>Filter using phenotypic (samples) variables</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1">msnset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb38-2" title="2"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(group <span class="op">==</span><span class="st"> "A"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb38-3" title="3"><span class="st">    </span>exprs <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb38-4" title="4"><span class="st">    </span>head</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(group <span class="op">==</span><span class="st"> "A"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs <span class="op">%&gt;%</span>
+<span class="st">    </span>head</code></pre></div>
 <pre><code>##     iTRAQ4.114 iTRAQ4.115
 ## X1   1347.6158  2247.3097
 ## X10   739.9861   799.3501
@@ -341,10 +342,10 @@
 ## X13 26143.7542 29677.4781
 ## X14  6448.0829  6234.1957</code></pre>
 <p>Filter on both feature and sample variables</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1">msnset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb40-2" title="2"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(group <span class="op">==</span><span class="st"> "A"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb40-3" title="3"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(ProteinAccession <span class="op">==</span><span class="st"> "ENO"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb40-4" title="4"><span class="st">    </span>exprs</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(group <span class="op">==</span><span class="st"> "A"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(ProteinAccession <span class="op">==</span><span class="st"> "ENO"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs</code></pre></div>
 <pre><code>##       iTRAQ4.114  iTRAQ4.115
 ## X27 147093.25030 94770.28613
 ## X46   5369.73246  1148.32171
@@ -355,9 +356,9 @@
 <h2 class="hasAnchor">
 <a href="#group-by-one-or-more-feature-or-sample-variables" class="anchor"></a>Group by one or more feature or sample variables</h2>
 <p>Group by features</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">msnset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb42-2" title="2"><span class="st">    </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb42-3" title="3"><span class="st">    </span>show</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span>
+<span class="st">    </span>show</code></pre></div>
 <pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
 ## assayData: 55 features, 4 samples 
 ##   element names: exprs 
@@ -381,9 +382,9 @@
 ##   features  ProteinAccession [ 40 ]
 ##   samples    [ 0 ]</code></pre>
 <p>Group by samples</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">msnset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb44-2" title="2"><span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb44-3" title="3"><span class="st">    </span>show</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
+<span class="st">    </span>show</code></pre></div>
 <pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
 ## assayData: 55 features, 4 samples 
 ##   element names: exprs 
@@ -407,10 +408,10 @@
 ##   features   [ 0 ]
 ##   samples   group [ 2 ]</code></pre>
 <p>Group by features and samples</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">msnset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb46-2" title="2"><span class="st">    </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb46-3" title="3"><span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb46-4" title="4"><span class="st">    </span>show</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
+<span class="st">    </span>show</code></pre></div>
 <pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
 ## assayData: 55 features, 4 samples 
 ##   element names: exprs 
@@ -438,16 +439,17 @@
 <h2 class="hasAnchor">
 <a href="#summarise-the-expression-values-of-a-dataset" class="anchor"></a>Summarise the expression values of a dataset</h2>
 <p>Grouping and summarising by features</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(charge) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb48-2" title="2"><span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/median">median</a></span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb48-3" title="3"><span class="st">    </span>exprs</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(charge) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/median">median</a></span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs</code></pre></div>
 <pre><code>##   iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
 ## 2  6916.4565   6099.295   6436.630   7715.448
 ## 3   982.4017   1119.316   1048.691   1175.080</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb50-2" title="2"><span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/median">median</a></span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb50-3" title="3"><span class="st">    </span>exprs <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb50-4" title="4"><span class="st">    </span>head</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/median">median</a></span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs <span class="op">%&gt;%</span>
+<span class="st">    </span>head</code></pre></div>
 <pre><code>##         iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
 ## BSA       1347.616   2247.310   3927.693  7661.1463
 ## ECA0172  17593.548  18545.620  19361.837 18328.2365
@@ -456,10 +458,10 @@
 ## ECA0469   1069.945   1035.689   1029.420   999.6957
 ## ECA0621   1101.062   1124.167   1140.093  1191.8055</code></pre>
 <p>Grouping and summarising by samples</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1">msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb52-2" title="2"><span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb52-3" title="3"><span class="st">    </span>exprs <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb52-4" title="4"><span class="st">    </span>head</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs <span class="op">%&gt;%</span>
+<span class="st">    </span>head</code></pre></div>
 <pre><code>##              A          B
 ## X1   1797.4628  5794.4197
 ## X10   769.6681   826.6388
@@ -468,16 +470,46 @@
 ## X13 27910.6161 28495.8100
 ## X14  6341.1393  6670.0603</code></pre>
 <p>Grouping by features and samples</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">msnset <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb54-2" title="2"><span class="st">    </span><span class="kw">group_by</span>(charge) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb54-3" title="3"><span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(exprs)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb54-4" title="4"><span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb54-5" title="5"><span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">max</a></span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb54-6" title="6"><span class="st">    </span>exprs</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(charge) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(exprs)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">max</a></span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs</code></pre></div>
 <pre><code>##          A         B
 ## 2 13880.38 12660.236
 ## 3  1477.78  1346.071</code></pre>
+<p>In the following example, we show how <code>dplyr</code> and <code>MSnbase</code> (here we using <code>filterNA</code>, <code>combineFeatures</code> and <code>normalise</code>) functions oberate seamlessly and can be mixed and matched with in chain of operations:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/MSnbase/topics/MSnSet-class">filterNA</a></span>() <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/MSnbase/topics/combineFeatures">combineFeatures</a></span>(<span class="dt">method =</span> <span class="st">"median"</span>, <span class="dt">fcol =</span> <span class="st">"ProteinAccession"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(exprs)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/MSnbase/topics/normalise-methods">normalise</a></span>(<span class="dt">method =</span> <span class="st">"quantiles"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(ProteinAccession <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'ENO'</span>, <span class="st">'BSA'</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span>exprs</code></pre></div>
+<pre><code>##             A         B
+## BSA  1462.295  4355.662
+## ENO 41383.731 11272.133</code></pre>
+<p>In this last example, we use <code>as_tibble</code> and pipe the mutated data directly into <code>ggplot2</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"ggplot2"</span>)
+msnset <span class="op">%&gt;%</span><span class="st"> </span>as_tibble <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">rt =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cut">cut</a></span>(retention.time, <span class="dv">7</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> sample, <span class="dt">y =</span> exprs)) <span class="op">+</span>
+<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_boxplot">geom_boxplot</a></span>() <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/facet_grid">facet_grid</a></span>(charge <span class="op">~</span><span class="st"> </span>rt)</code></pre></div>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="tidies_files/figure-html/ggplot-1.png" width="700"></p>
 </div>
+</div>
+<div id="future-work" class="section level1">
+<h1 class="hasAnchor">
+<a href="#future-work" class="anchor"></a>Future work</h1>
+<p>See issues, and the <a href="https://github.com/lgatto/tidies/issues/1">TODO</a> issue in particular for current and future work. Depending on interest, the functionality presented here could be extended to other data types such as <code>SummarizedExperiments</code>.</p>
+<p>A technical issue is with the dependency on both Bioconductor and the tidyverse is the recurrent name clashes:</p>
+<div class="figure">
+<img src="conflicts.png" alt="Bioconductor and tidyverse conflicts"><p class="caption">Bioconductor and tidyverse conflicts</p>
+</div>
+<p>The <code>combine</code> function, for example, is defined as a generic with signature <code>combine(x, y, ...)</code> in <em><a href="https://bioconductor.org/packages/3.8/BiocGenerics">BiocGenerics</a></em>, while it is <code>combine(...)</code> in <em><a href="https://CRAN.R-project.org/package=dplyr">dplyr</a></em>.</p>
 </div>
   </div>
 
@@ -502,6 +534,7 @@
       <li><a href="#summarise-the-expression-values-of-a-dataset">Summarise the expression values of a dataset</a></li>
       </ul>
 </li>
+      <li><a href="#future-work">Future work</a></li>
       </ul>
 </div>
       </div>

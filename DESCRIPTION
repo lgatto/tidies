@@ -8,7 +8,7 @@ Description: Implementing the dplyr grammar of data manipulation for
              eSet-based high troughput omics data.
 Depends: R (>= 3.4.0), Biobase, MSnbase, dplyr, methods
 Imports: tidyr, tibble
-Suggests: knitr, BiocStyle, biobroom
+Suggests: knitr, BiocStyle, biobroom, ggplot2
 License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
