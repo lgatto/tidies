@@ -1,1 +1,2 @@
-^docs$.editorconfig
+^docs$
+.editorconfig
