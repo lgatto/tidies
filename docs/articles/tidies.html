@@ -198,7 +198,7 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 <pre><code>## The following object is masked from 'package:S4Vectors':
 ## 
 ##     expand</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/tidyr/topics/gather">gather</a></span>(x, sample, exprs, <span class="op">-</span>fv)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span>(x, sample, exprs, <span class="op">-</span>fv)
 <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(x)</code></pre></div>
 <pre><code>##   spectrum ProteinAccession                       ProteinDescription
 ## 1        1              BSA                     bovine serum albumin
@@ -495,8 +495,8 @@ msnset <span class="op">%&gt;%</span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"ggplot2"</span>)
 msnset <span class="op">%&gt;%</span><span class="st"> </span>as_tibble <span class="op">%&gt;%</span>
 <span class="st">    </span><span class="kw">mutate</span>(<span class="dt">rt =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cut">cut</a></span>(retention.time, <span class="dv">7</span>)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> sample, <span class="dt">y =</span> exprs)) <span class="op">+</span>
-<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_boxplot">geom_boxplot</a></span>() <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/facet_grid">facet_grid</a></span>(charge <span class="op">~</span><span class="st"> </span>rt)</code></pre></div>
+<span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> sample, <span class="dt">y =</span> exprs)) <span class="op">+</span>
+<span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span>() <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span>(charge <span class="op">~</span><span class="st"> </span>rt)</code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="tidies_files/figure-html/ggplot-1.png" width="700"></p>
 </div>
