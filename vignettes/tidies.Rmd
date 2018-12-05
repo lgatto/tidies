@@ -155,8 +155,10 @@ head(x)
 to produce a dataframe with `r nrow(x)` rows corresponding to the
 original `r nrow(msnset)` features for the `r ncol(exprs(msnset))`
 samples, and, for each of these, the corresponding feature
-metadata. This is the general principal that is applied, internally,
-in the `tidies` functions.
+metadata.
+
+Given that this coercion is often useful, it is implemented in
+`as_tibble`.
 
 # Using `tidies`
 
@@ -173,8 +175,8 @@ Select sample variables (updates only the phenotypic data)
 
 ```{r selectsamples}
 msnset %>%
-	select(group) %>%
-	pData
+    select(group) %>%
+    pData
 ```
 
 Select feature variables (updates only the feature data)
@@ -185,21 +187,21 @@ fvarLabels(msnset)
 
 ## Select a single feature variable
 msnset %>%
-	select(charge) %>%
-	fvarLabels
+    select(charge) %>%
+    fvarLabels
 
 ## Select features using a pattern
 msnset %>%
-	select(starts_with("Protein")) %>%
-	fvarLabels
+    select(starts_with("Protein")) %>%
+    fvarLabels
 ```
 
 Select sample and feature variables
 
 ```{r selectboth}
 msnset %>%
-	select(group) %>%
-	select(starts_with("Prot"))
+    select(group) %>%
+    select(starts_with("Prot"))
 ```
 
 
@@ -209,17 +211,17 @@ Arrange columns/samples
 
 ```{r arrangesamples}
 msnset %>%
-	arrange(desc(group)) %>%
-	pData
+    arrange(desc(group)) %>%
+    pData
 ```
 
 Arrange rows/features and select feature variables
 
 ```{r arrangefeats}
 msnset %>%
-	arrange(charge) %>%
-	select(charge) %>%
-	fData %>% head
+    arrange(charge) %>%
+    select(charge) %>%
+    fData %>% head
 ```
 
 ## Return features and samples with matching conditions
@@ -228,17 +230,17 @@ Filter using feature variables
 
 ```{r filterfeats}
 msnset %>%
-	filter(ProteinAccession == "ENO") %>%
-	exprs
+    filter(ProteinAccession == "ENO") %>%
+    exprs
 ```
 
 Filter using phenotypic (samples) variables
 
 ```{r filtersamples}
 msnset %>%
-	filter(group == "A") %>%
-	exprs %>%
-	head
+    filter(group == "A") %>%
+    exprs %>%
+    head
 
 ```
 
@@ -246,9 +248,9 @@ Filter on both feature and sample variables
 
 ```{r filterboth}
 msnset %>%
-	filter(group == "A") %>%
-	filter(ProteinAccession == "ENO") %>%
-	exprs
+    filter(group == "A") %>%
+    filter(ProteinAccession == "ENO") %>%
+    exprs
 ```
 
 ## Group by one or more feature or sample variables
@@ -257,25 +259,25 @@ Group by features
 
 ```{r groupby1}
 msnset %>%
-	group_by(ProteinAccession) %>%
-	show
+    group_by(ProteinAccession) %>%
+    show
 ```
 
 Group by samples
 
 ```{r groupby2}
 msnset %>%
-	group_by(group) %>%
-	show
+    group_by(group) %>%
+    show
 ```
 
 Group by features and samples
 
 ```{r groupby3}
 msnset %>%
-	group_by(ProteinAccession) %>%
-	group_by(group) %>%
-	show
+    group_by(ProteinAccession) %>%
+    group_by(group) %>%
+    show
 ```
 
 ## Summarise the expression values of a dataset
@@ -284,31 +286,31 @@ Grouping and summarising by features
 
 ```{r summarise1}
 msnset %>% group_by(charge) %>%
-	summarise(median(exprs, na.rm = TRUE)) %>%
-	exprs
+    summarise(median(exprs, na.rm = TRUE)) %>%
+    exprs
 
 msnset %>% group_by(ProteinAccession) %>%
-	summarise(median(exprs, na.rm = TRUE)) %>%
-	exprs %>%
-	head
+    summarise(median(exprs, na.rm = TRUE)) %>%
+    exprs %>%
+    head
 ```
 
 Grouping and summarising by samples
 
 ```{r summarise2}
 msnset %>% group_by(group) %>%
-	summarise(mean(exprs, na.rm = TRUE)) %>%
-	exprs %>%
-	head
+    summarise(mean(exprs, na.rm = TRUE)) %>%
+    exprs %>%
+    head
 ```
 
 Grouping by features and samples
 
 ```{r summarise3}
 msnset %>%
-	group_by(charge) %>%
-	summarise(mean(exprs)) %>%
-	group_by(group) %>%
-	summarise(max(exprs, na.rm = TRUE)) %>%
-	exprs
+    group_by(charge) %>%
+    summarise(mean(exprs)) %>%
+    group_by(group) %>%
+    summarise(max(exprs, na.rm = TRUE)) %>%
+    exprs
 ```
