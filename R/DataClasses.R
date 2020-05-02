@@ -7,55 +7,35 @@ setOldClass("grouped_df")
 ##' A eSet/MSnSet object with grouped sample or feature variables
 ##'
 ##' This object extends the [MSnbase::MSnSet] class by adding slots
-##' necessary to record the grouping structure. These additional slots
-##' are inherited from the [dplyr::grouped_df] class.
+##' necessary to record the grouping structure. Objects of class
+##' `Grouped_eSet` are created by the `group_by` function. See the
+##' vignette for examples.
 ##'
-##' Objects of class `Grouped_eSet` are created by the `group_by`
-##' function. See the vignette for examples.
-##'
-##' @slot fvars a `character` vector or a `list` of grouping feature
-##'     variables.
-##' @slot fdrop a logical (default is `TRUE`) to preserve all feature
-##'     variable factor levels, even those without data.
-##' @slot findices indices defining the feature groups.
-##' @slot fgroup_sizes an `integer` defining the sizes of the feature
-##'     groups.
-##' @slot fbiggest_group_size an `integer` defining the biggest
-##'     feature group size.
-##' @slot flabels a `data.frame` defining the feature groups and
-##'     levels.
-##' @slot pvars a `character` vector or a `list` of grouping sample
-##'     variables.
-##' @slot pdrop a logical (default is `TRUE`) to preserve all sample
-##'     variable factor levels, even those without data.
-##' @slot pindices indices defining the sample groups.
-##' @slot pgroup_sizes an `integer` defining the sizes of the sample
-##'     groups.
-##' @slot pbiggest_group_size an `integer` defining the biggest sample
-##'     group size.
-##' @slot plabels a `data.frame` defining the sample groups and
-##'     levels.
+##' @slot grouped_fData An instance of class `data.frame`
+##'     corresponding to a grouped `featureData` slot.
+##'     
+##' @slot grouped_pData An instance of class `data.frame`
+##'     corresponding to a grouped `phenoData` slot.
+##' 
 ##' @export
+##' 
 ##' @aliases Grouped_eSet
+##' 
 ##' @rdname Grouped_eSet
+##' 
 ##' @md
 .Grouped_eSet <-
     setClass("Grouped_eSet",
              slots = c(
-                 fvars = "character",
-                 fdrop = "logical",
-                 findices = "list",
-                 fgroup_sizes = "integer",
-                 fbiggest_group_size = "integer",
-                 flabels = "data.frame",
-                 pvars = "character",
-                 pdrop = "logical",
-                 pindices = "list",
-                 pgroup_sizes = "integer",
-                 pbiggest_group_size = "integer",
-                 plabels = "data.frame"),
-             contains = c("MSnSet", "grouped_df"))
+                 grouped_fData = "data.frame",
+                 grouped_pData = "data.frame"),
+             contains = "MSnSet")
 
+.group_names <- function(x) 
+    colnames(x)[-ncol(x)]
+
+.n_groups <- function(x) 
+    nrow(x)
 
 ##' @export
 ##' @rdname Grouped_eSet
@@ -64,16 +44,18 @@ setOldClass("grouped_df")
 setMethod("show", "Grouped_eSet",
           function(object) {
               callNextMethod()
-              fgrps <- if (is.null(object@findices)) "?" else length(object@findices)
-              pgrps <- if (is.null(object@pindices)) "?" else length(object@pindices)
+              n_fd <- .n_groups(object@grouped_fData)
+              n_pd <- .n_groups(object@grouped_pData)
+              gr_fd <- .group_names(object@grouped_fData)
+              gr_pd <- .group_names(object@grouped_pData)
               cat("Groups:\n")
-              cat("  features ", object@fvars, "[", fgrps, "]\n")
-              cat("  samples  ", object@pvars, "[", pgrps, "]\n")
+              cat("  features ", paste(gr_fd, collapse = ", "),  "[", n_fd, "]\n")
+              cat("  samples  ", paste(gr_pd, collapse = ", "), "[", n_pd, "]\n")
           })
 
 ##' @export
 setAs("MSnSet", "Grouped_eSet",
-      function(from)
+      function(from) 
           .Grouped_eSet(
               experimentData = from@experimentData,
               processingData = from@processingData,
@@ -83,6 +65,7 @@ setAs("MSnSet", "Grouped_eSet",
               featureData = from@featureData,
               annotation = from@annotation,
               protocolData = from@protocolData))
+
 
 ## ##' @export
 ## setAs("eSet", "Grouped_eSet",

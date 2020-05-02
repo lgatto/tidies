@@ -324,7 +324,9 @@ In the following example, we show how `dplyr` and `MSnbase` (here we
 using `filterNA`, `combineFeatures` and `normalise`) functions oberate
 seamlessly and can be mixed and matched with in chain of operations:
 
+
 ```{r summarise4}
+stop("WRONG RESULTS")
 msnset %>%
     filterNA() %>%
     combineFeatures(method = "median", fcol = "ProteinAccession") %>%

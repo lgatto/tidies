@@ -8,19 +8,11 @@ group_by.eSet <- function(.data, ..., add = FALSE) {
     pres <- try(group_by(pData(.data), ..., add = add), silent = TRUE)
     ans <- as(.data, "Grouped_eSet")
     if (!inherits(fres, "try-error")) {
-        ans@fvars <- attr(fres, "vars")
-        ans@fdrop <- attr(fres, "drop")
-        ans@findices <- attr(fres, "indices")
-        ans@fgroup_sizes <- attr(fres, "group_sizes")
-        ans@fbiggest_group_size <- attr(fres, "biggest_group_size")
-        ans@flabels <- attr(fres, "labels")
+        ans@grouped_fData <- attr(fres, "groups")
     } else if (!inherits(pres, "try-error")) {
-        ans@pvars <- attr(pres, "vars")
-        ans@pdrop <- attr(pres, "drop")
-        ans@pindices <- attr(pres, "indices")
-        ans@pgroup_sizes <- attr(pres, "group_sizes")
-        ans@pbiggest_group_size <- attr(pres, "biggest_group_size")
-        ans@plabels <- attr(pres, "labels")
+        ans@grouped_pData <- attr(pres, "groups")
+    } else {
+        warning("No variables for grouping found.")
     }
     ans
 }
