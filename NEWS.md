@@ -1,5 +1,8 @@
 # tidies 0.1
 
+## Changes in version 0.0.4
+- Fix to accomodate changes in `dplyr` <2020-05-03 Sun>
+
 ## Changes in version 0.0.3
 - as_tibble,eSet function <2018-12-04 Tue>
 

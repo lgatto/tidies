@@ -30,7 +30,7 @@
 
 \item{...}{Expressions evaluated in the context of the object's
 feature and sample variable and passed to the \code{dplyr}
-functions. Ignored in \code{as_tibble,MSnSet}.}
+functions. Ignored in \verb{as_tibble,MSnSet}.}
 
 \item{add}{As in the original `dplyr::group_by`function, when ‘add
 = FALSE’, the default, `group_by()` will override existing
@@ -60,6 +60,6 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Laurent Gatto \email{lg390@cam.ac.uk}
+\strong{Maintainer}: Laurent Gatto \email{laurent.gatto@uclouvain.be}
 
 }

@@ -13,7 +13,8 @@ summarise_fData_Grouped_eSet<- function(.data, ...) {
     ans <- readMSnSet2(res, ecol = match(sampleNames(.data), names(res)))
     pData(ans) <- pData(.data)
     fd <- data.frame(res[, -match(sampleNames(.data), names(res)), drop = FALSE])
-    featureNames(ans) <- rownames(fd)
+    ## this expects a single variable in group_vars
+    featureNames(ans) <- rownames(fd) <- fd[, group_vars]
     fData(ans) <- fd
     ## how to, or is it relevant to add the rest of the fvarLabels?
     ## Suggestion - add only this that are unique within the groups

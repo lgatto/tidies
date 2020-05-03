@@ -1,8 +1,8 @@
 Package: tidies
 Title: A Grammar of Data Manipulation for Omics Experiments
-Version: 0.0.3
+Version: 0.0.4
 Authors@R: person("Laurent", "Gatto",
-                  email = "lg390@cam.ac.uk",
+                  email = "laurent.gatto@uclouvain.be",
                   role = c("aut", "cre"))
 Description: Implementing the dplyr grammar of data manipulation for
              eSet-based high troughput omics data.
@@ -15,7 +15,7 @@ LazyData: true
 VignetteBuilder: knitr
 BugReports: https://github.com/lgatto/tidies/issues
 URL: https://github.com/lgatto/tidies
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 Collate:
     'DataClasses.R'
     'tidies.R'

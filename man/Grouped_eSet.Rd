@@ -15,48 +15,17 @@
 }
 \description{
 This object extends the \link[MSnbase:MSnSet]{MSnbase::MSnSet} class by adding slots
-necessary to record the grouping structure. These additional slots
-are inherited from the \link[dplyr:grouped_df]{dplyr::grouped_df} class.
-}
-\details{
-Objects of class \code{Grouped_eSet} are created by the \code{group_by}
-function. See the vignette for examples.
+necessary to record the grouping structure. Objects of class
+\code{Grouped_eSet} are created by the \code{group_by} function. See the
+vignette for examples.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{fvars}}{a \code{character} vector or a \code{list} of grouping feature
-variables.}
+\item{\code{grouped_fData}}{An instance of class \code{data.frame}
+corresponding to a grouped \code{featureData} slot.}
 
-\item{\code{fdrop}}{a logical (default is \code{TRUE}) to preserve all feature
-variable factor levels, even those without data.}
-
-\item{\code{findices}}{indices defining the feature groups.}
-
-\item{\code{fgroup_sizes}}{an \code{integer} defining the sizes of the feature
-groups.}
-
-\item{\code{fbiggest_group_size}}{an \code{integer} defining the biggest
-feature group size.}
-
-\item{\code{flabels}}{a \code{data.frame} defining the feature groups and
-levels.}
-
-\item{\code{pvars}}{a \code{character} vector or a \code{list} of grouping sample
-variables.}
-
-\item{\code{pdrop}}{a logical (default is \code{TRUE}) to preserve all sample
-variable factor levels, even those without data.}
-
-\item{\code{pindices}}{indices defining the sample groups.}
-
-\item{\code{pgroup_sizes}}{an \code{integer} defining the sizes of the sample
-groups.}
-
-\item{\code{pbiggest_group_size}}{an \code{integer} defining the biggest sample
-group size.}
-
-\item{\code{plabels}}{a \code{data.frame} defining the sample groups and
-levels.}
+\item{\code{grouped_pData}}{An instance of class \code{data.frame}
+corresponding to a grouped \code{phenoData} slot.}
 }}
 
