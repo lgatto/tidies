@@ -6,18 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Grammar of Data Manipulation for Omics Experiments • tidies</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="A Grammar of Data Manipulation for Omics Experiments">
-<meta property="og:description" content="">
-<meta name="twitter:card" content="summary">
+<meta property="og:description" content="tidies">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -30,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidies</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -38,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -54,8 +55,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/lgatto/tidies">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/lgatto/tidies/">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -68,10 +69,11 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>A Grammar of Data Manipulation for Omics Experiments</h1>
+      <h1 data-toc-skip>A Grammar of Data Manipulation for Omics Experiments</h1>
                         <h4 class="author">Laurent Gatto</h4>
             
       
@@ -100,16 +102,16 @@
 <img src="msnset.png" alt="A typical omics data object"><p class="caption">A typical omics data object</p>
 </div>
 <p>The coordinated nature of the high throughput data guarantees that the dimensions of the different slots will always match (i.e the columns in the expression data and then rows in the sample metadata, as well as the rows in the expression data and feature metadata) during data manipulation. The metadata slots can grow additional co-variates (columns) without affecting the other structures.</p>
-<p>To illustrate such an omics data container, we’ll make use of the <code>msnset</code> object that comes with the <em><a href="https://bioconductor.org/packages/3.8/MSnbase">MSnbase</a></em> package, which contains data for 55 features and 4 samples.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"MSnbase"</span>)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(msnset)
+<p>To illustrate such an omics data container, we’ll make use of the <code>msnset</code> object that comes with the <em><a href="https://bioconductor.org/packages/3.11/MSnbase">MSnbase</a></em> package, which contains data for 55 features and 4 samples.</p>
+<div class="sourceCode"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"MSnbase"</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">msnset</span>)
 
-## Some test sample groups
-msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/MSnbase/topics/pSet-class">dim</a></span>(msnset)</code></pre></div>
+<span class="co">## Some test sample groups</span>
+<span class="no">msnset</span>$<span class="no">group</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>)
+<span class="fu"><a href="https://rdrr.io/pkg/MSnbase/man/pSet-class.html">dim</a></span>(<span class="no">msnset</span>)</pre></body></html></div>
 <pre><code>## [1] 55  4</code></pre>
 <p>The expression data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(<span class="kw">exprs</span>(msnset))</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu">exprs</span>(<span class="no">msnset</span>))</pre></body></html></div>
 <pre><code>##     iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
 ## X1   1347.6158  2247.3097  3927.6931  7661.1463
 ## X10   739.9861   799.3501   712.5983   940.6793
@@ -118,14 +120,14 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 ## X13 26143.7542 29677.4781 29089.0593 27902.5608
 ## X14  6448.0829  6234.1957  6902.8903  6437.2303</code></pre>
 <p>The sample metadata:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pData</span>(msnset)</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="fu">pData</span>(<span class="no">msnset</span>)</pre></body></html></div>
 <pre><code>##               mz reporters group
 ## iTRAQ4.114 114.1    iTRAQ4     A
 ## iTRAQ4.115 115.1    iTRAQ4     A
 ## iTRAQ4.116 116.1    iTRAQ4     B
 ## iTRAQ4.117 117.1    iTRAQ4     B</code></pre>
 <p>The feature metadata:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fData</span>(msnset)[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="fu">fData</span>(<span class="no">msnset</span>)[<span class="fl">1</span>:<span class="fl">10</span>, <span class="fl">1</span>:<span class="fl">5</span>]</pre></body></html></div>
 <pre><code>##     spectrum ProteinAccession                       ProteinDescription
 ## X1         1              BSA                     bovine serum albumin
 ## X10       10          ECA1422 glucose-1-phosphate cytidylyltransferase
@@ -148,8 +150,8 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 ## X16        VMLQAYDEGR    1
 ## X17     ANAVVLATGGAGR    1
 ## X18         VATPEWQSK    1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## all feature variables
-<span class="kw">fvarLabels</span>(msnset)</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="co">## all feature variables</span>
+<span class="fu">fvarLabels</span>(<span class="no">msnset</span>)</pre></body></html></div>
 <pre><code>##  [1] "spectrum"            "ProteinAccession"    "ProteinDescription" 
 ##  [4] "PeptideSequence"     "file"                "retention.time"     
 ##  [7] "precursor.mz"        "precursor.intensity" "charge"             
@@ -162,7 +164,7 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 <p>The <a href="https://www.jstatsoft.org/article/view/v059i10"><em>tidy data</em></a> definition and <a href="http://tidyverse.tidyverse.org/articles/manifesto.html">tidy tools manifesto</a> lay out the principles that packages in the tidyverse package. <code>tidies</code> isn’t part of the <code>tidyverse</code>, but aims at applying these same principles. The concepts that are relevant for the application to omics data are</p>
 <ul>
 <li><p>Reuse of existing data structures; in this case <code>eSet</code> objects, that constitute our <em>tidy</em> omics data.</p></li>
-<li><p>Compose simple functions with the pipe; here we apply the widely used <em><a href="https://CRAN.R-project.org/package=dplyr">dplyr</a></em> functions and <em><a href="https://CRAN.R-project.org/package=magrittr">magrittr</a></em> <code>%&gt;%</code> operator. Each of the adapted tidy function to use and return tidy <code>eSet</code> data.</p></li>
+<li><p>Compose simple functions with the pipe; here we apply the widely used <em><a href="https://CRAN.R-project.org/package=dplyr">dplyr</a></em> functions and <em><a href="https://CRAN.R-project.org/package=magrittr">magrittr</a></em> <code><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></code> operator. Each of the adapted tidy function to use and return tidy <code>eSet</code> data.</p></li>
 <li><p>Keep the ability to use existing Bioconductor functions that operate on the <code>eSet</code> class; this assumes that these functions are tidy themselves, i.e. that they return an <code>eSet</code> object.</p></li>
 </ul>
 </div>
@@ -170,13 +172,17 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 <h2 class="hasAnchor">
 <a href="#the-tidies-package" class="anchor"></a>The <code>tidies</code> package</h2>
 <p>The goal of this package is to support the <code>dplyr</code> function such as <code>select</code>, <code>filter</code>, <code>group_by</code>, <code>summarise</code>, … direcly on omics data containers described above. The function act on the respective variable and expression slots and preserve the object’s class.</p>
-<p>Another approach is to convert the omics objects to tidy <code>tibbles</code> and work direcly with these. This can easily be done with the Bioconductor <em><a href="https://bioconductor.org/packages/3.8/biobroom">biobroom</a></em> package, that will convert the 55 features by 4 samples into a 220 tibble:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"biobroom"</span>)</code></pre></div>
+<p>Another approach is to convert the omics objects to tidy <code>tibbles</code> and work direcly with these. This can easily be done with the Bioconductor <em><a href="https://bioconductor.org/packages/3.11/biobroom">biobroom</a></em> package, that will convert the 55 features by 4 samples into a 220 tibble:</p>
+<div class="sourceCode"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"biobroom"</span>)</pre></body></html></div>
 <pre><code>## Loading required package: broom</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tidy</span>(msnset, <span class="dt">addPheno =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## Registered S3 methods overwritten by 'biobroom':
+##   method      from 
+##   glance.list broom
+##   tidy.list   broom</code></pre>
+<div class="sourceCode"><html><body><pre class="r"><span class="fu">tidy</span>(<span class="no">msnset</span>, <span class="kw">addPheno</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <pre><code>## # A tibble: 220 x 6
 ##    protein sample        mz reporters group  value
-##    &lt;fct&gt;   &lt;fct&gt;      &lt;dbl&gt; &lt;fct&gt;     &lt;chr&gt;  &lt;dbl&gt;
+##    &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;fct&gt;     &lt;chr&gt;  &lt;dbl&gt;
 ##  1 X1      iTRAQ4.114  114. iTRAQ4    A      1348.
 ##  2 X10     iTRAQ4.114  114. iTRAQ4    A       740.
 ##  3 X11     iTRAQ4.114  114. iTRAQ4    A     27638.
@@ -187,47 +193,43 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 ##  8 X16     iTRAQ4.114  114. iTRAQ4    A     10155.
 ##  9 X17     iTRAQ4.114  114. iTRAQ4    A      2800.
 ## 10 X18     iTRAQ4.114  114. iTRAQ4    A      4459.
-## # ... with 210 more rows</code></pre>
+## # … with 210 more rows</code></pre>
 <p>Using <code>biobroom::tidy</code> drops the feature data that, sometimes, is important. It is possible to create dataframe that contains these metadata using the following approach. First, combine the expression data and the feature data into a single <em>wide</em> dataframe using <code>ms2df</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>MSnbase<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/MSnbase/topics/MSnSet-class">ms2df</a></span>(msnset)</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">x</span> <span class="kw">&lt;-</span> <span class="kw pkg">MSnbase</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/MSnbase/man/MSnSet-class.html">ms2df</a></span>(<span class="no">msnset</span>)</pre></body></html></div>
 <p>which then can be converted to a long, tidy, form with</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fv &lt;-<span class="st"> </span><span class="kw">fvarLabels</span>(msnset)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tidyr"</span>)</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">fv</span> <span class="kw">&lt;-</span> <span class="fu">fvarLabels</span>(<span class="no">msnset</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"tidyr"</span>)</pre></body></html></div>
 <pre><code>## 
 ## Attaching package: 'tidyr'</code></pre>
 <pre><code>## The following object is masked from 'package:S4Vectors':
 ## 
 ##     expand</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span>(x, sample, exprs, <span class="op">-</span>fv)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(x)</code></pre></div>
-<pre><code>##   spectrum ProteinAccession                       ProteinDescription
-## 1        1              BSA                     bovine serum albumin
-## 2       10          ECA1422 glucose-1-phosphate cytidylyltransferase
-## 3       11          ECA4030         50S ribosomal subunit protein L4
-## 4       12          ECA3882                   chaperone protein DnaK
-## 5       13          ECA1364      succinyl-CoA synthetase alpha chain
-## 6       14          ECA0871              NADP-dependent malic enzyme
-##   PeptideSequence file retention.time precursor.mz precursor.intensity
-## 1          NYQEAK    1        1149.31     520.7833             3449020
-## 2 VTLVDTGEHSMTGGR    1        1503.03     573.9539             7849420
-## 3           SPIWR    1        1663.61     401.7392            41253600
-## 4        TAIDDALK    1        1663.86     567.8339            23549500
-## 5          SILINK    1        1664.08     488.3269            13025200
-## 6    DFEVVNNESDPR    1        1664.32     782.8715            18405000
-##   charge peaks.count tic  ionCount ms.level acquisition.number
-## 1      2        1922   0  26413754        2                  2
-## 2      3        1376   0  24482281        2                 11
-## 3      2        1571   0 231075934        2                 12
-## 4      2        2397   0 247323187        2                 13
-## 5      2        2574   0 207247502        2                 14
-## 6      2        1829   0 115317275        2                 15
-##   collision.energy     sample      exprs
-## 1               40 iTRAQ4.114  1347.6158
-## 2               40 iTRAQ4.114   739.9861
-## 3               40 iTRAQ4.114 27638.3582
-## 4               40 iTRAQ4.114 31892.8928
-## 5               40 iTRAQ4.114 26143.7542
-## 6               40 iTRAQ4.114  6448.0829</code></pre>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">x</span> <span class="kw">&lt;-</span> <span class="kw pkg">tidyr</span><span class="kw ns">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span>(<span class="no">x</span>,
+                         <span class="kw">names_to</span> <span class="kw">=</span> <span class="st">"sample"</span>,
+                         <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">"exprs"</span>,
+                         -<span class="no">fv</span>)</pre></body></html></div>
+<pre><code>## Note: Using an external vector in selections is ambiguous.
+## ℹ Use `all_of(fv)` instead of `fv` to silence this message.
+## ℹ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.
+## This message is displayed once per session.</code></pre>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">x</span></pre></body></html></div>
+<pre><code>## # A tibble: 220 x 17
+##    spectrum ProteinAccession ProteinDescript… PeptideSequence  file
+##  *    &lt;int&gt; &lt;fct&gt;            &lt;fct&gt;            &lt;fct&gt;           &lt;int&gt;
+##  1        1 BSA              bovine serum al… NYQEAK              1
+##  2        1 BSA              bovine serum al… NYQEAK              1
+##  3        1 BSA              bovine serum al… NYQEAK              1
+##  4        1 BSA              bovine serum al… NYQEAK              1
+##  5       10 ECA1422          glucose-1-phosp… VTLVDTGEHSMTGGR     1
+##  6       10 ECA1422          glucose-1-phosp… VTLVDTGEHSMTGGR     1
+##  7       10 ECA1422          glucose-1-phosp… VTLVDTGEHSMTGGR     1
+##  8       10 ECA1422          glucose-1-phosp… VTLVDTGEHSMTGGR     1
+##  9       11 ECA4030          50S ribosomal s… SPIWR               1
+## 10       11 ECA4030          50S ribosomal s… SPIWR               1
+## # … with 210 more rows, and 12 more variables: retention.time &lt;dbl&gt;,
+## #   precursor.mz &lt;dbl&gt;, precursor.intensity &lt;dbl&gt;, charge &lt;int&gt;,
+## #   peaks.count &lt;int&gt;, tic &lt;dbl&gt;, ionCount &lt;dbl&gt;, ms.level &lt;int&gt;,
+## #   acquisition.number &lt;int&gt;, collision.energy &lt;dbl&gt;, sample &lt;chr&gt;, exprs &lt;dbl&gt;</code></pre>
 <p>to produce a dataframe with 220 rows corresponding to the original 55 features for the 4 samples, and, for each of these, the corresponding feature metadata.</p>
 <p>Given that this coercion is often useful, it is implemented in <code>as_tibble</code> (see the example below).</p>
 </div>
@@ -236,15 +238,15 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 <h1 class="hasAnchor">
 <a href="#using-tidies" class="anchor"></a>Using <code>tidies</code>
 </h1>
-<p>We start by loading the <code>tidies</code> package (which also automatically loads and attaches <em><a href="https://CRAN.R-project.org/package=magrittr">magrittr</a></em> for the <code>%&gt;%</code> operator).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"tidies"</span>)</code></pre></div>
+<p>We start by loading the <code>tidies</code> package (which also automatically loads and attaches <em><a href="https://CRAN.R-project.org/package=magrittr">magrittr</a></em> for the <code><a href="https://tidyr.tidyverse.org/reference/pipe.html">%&gt;%</a></code> operator).</p>
+<div class="sourceCode"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"tidies"</span>)</pre></body></html></div>
 <div id="select-feature-or-sample-variables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#select-feature-or-sample-variables" class="anchor"></a>Select feature or sample variables</h2>
 <p>Select sample variables (updates only the phenotypic data)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(group) <span class="op">%&gt;%</span>
-<span class="st">    </span>pData</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu">select</span>(<span class="no">group</span>) <span class="kw">%&gt;%</span>
+    <span class="no">pData</span></pre></body></html></div>
 <pre><code>##            group
 ## iTRAQ4.114     A
 ## iTRAQ4.115     A
@@ -252,27 +254,27 @@ msnset<span class="op">$</span>group &lt;-<span class="st"> </span><span class="
 ## iTRAQ4.117     B</code></pre>
 <p>Note that the output of <code>select(group)</code> is an <code>MSnSet</code> - we pipe it directly into <code>pData</code> to demonstrate that only that variable was retained.</p>
 <p>Select feature variables (updates only the feature data)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## All feature variables
-<span class="kw">fvarLabels</span>(msnset)</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="co">## All feature variables</span>
+<span class="fu">fvarLabels</span>(<span class="no">msnset</span>)</pre></body></html></div>
 <pre><code>##  [1] "spectrum"            "ProteinAccession"    "ProteinDescription" 
 ##  [4] "PeptideSequence"     "file"                "retention.time"     
 ##  [7] "precursor.mz"        "precursor.intensity" "charge"             
 ## [10] "peaks.count"         "tic"                 "ionCount"           
 ## [13] "ms.level"            "acquisition.number"  "collision.energy"</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Select a single feature variable
-msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(charge) <span class="op">%&gt;%</span>
-<span class="st">    </span>fvarLabels</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="co">## Select a single feature variable</span>
+<span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu">select</span>(<span class="no">charge</span>) <span class="kw">%&gt;%</span>
+    <span class="no">fvarLabels</span></pre></body></html></div>
 <pre><code>## [1] "charge"</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Select features using a pattern
-msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">"Protein"</span>)) <span class="op">%&gt;%</span>
-<span class="st">    </span>fvarLabels</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="co">## Select features using a pattern</span>
+<span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu">select</span>(<span class="fu"><a href="https://tidyr.tidyverse.org/reference/reexports.html">starts_with</a></span>(<span class="st">"Protein"</span>)) <span class="kw">%&gt;%</span>
+    <span class="no">fvarLabels</span></pre></body></html></div>
 <pre><code>## [1] "ProteinAccession"   "ProteinDescription"</code></pre>
 <p>Select sample and feature variables</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(group) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">"Prot"</span>))</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu">select</span>(<span class="no">group</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">select</span>(<span class="fu"><a href="https://tidyr.tidyverse.org/reference/reexports.html">starts_with</a></span>(<span class="st">"Prot"</span>))</pre></body></html></div>
 <pre><code>## MSnSet (storageMode: lockedEnvironment)
 ## assayData: 55 features, 4 samples 
 ##   element names: exprs 
@@ -296,19 +298,20 @@ msnset <span class="op">%&gt;%</span>
 <h2 class="hasAnchor">
 <a href="#order-data-by-it-feature-of-sample-variables" class="anchor"></a>Order data by it feature of sample variables</h2>
 <p>Arrange columns/samples</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(group)) <span class="op">%&gt;%</span>
-<span class="st">    </span>pData</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="no">group</span>)) <span class="kw">%&gt;%</span>
+    <span class="no">pData</span></pre></body></html></div>
 <pre><code>##               mz reporters group
 ## iTRAQ4.116 116.1    iTRAQ4     B
 ## iTRAQ4.117 117.1    iTRAQ4     B
 ## iTRAQ4.114 114.1    iTRAQ4     A
 ## iTRAQ4.115 115.1    iTRAQ4     A</code></pre>
 <p>Arrange rows/features and select feature variables</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">arrange</span>(charge) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(charge) <span class="op">%&gt;%</span>
-<span class="st">    </span>fData <span class="op">%&gt;%</span><span class="st"> </span>head</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu">arrange</span>(<span class="no">charge</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">select</span>(<span class="no">charge</span>) <span class="kw">%&gt;%</span>
+    <span class="no">fData</span> <span class="kw">%&gt;%</span>
+    <span class="no">head</span></pre></body></html></div>
 <pre><code>##     charge
 ## X1       2
 ## X11      2
@@ -321,19 +324,19 @@ msnset <span class="op">%&gt;%</span>
 <h2 class="hasAnchor">
 <a href="#return-features-and-samples-with-matching-conditions" class="anchor"></a>Return features and samples with matching conditions</h2>
 <p>Filter using feature variables</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(ProteinAccession <span class="op">==</span><span class="st"> "ENO"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span>exprs</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">ProteinAccession</span> <span class="kw">==</span> <span class="st">"ENO"</span>) <span class="kw">%&gt;%</span>
+    <span class="no">exprs</span></pre></body></html></div>
 <pre><code>##       iTRAQ4.114  iTRAQ4.115  iTRAQ4.116  iTRAQ4.117
 ## X27 147093.25030 94770.28613 42616.07457 21259.42497
 ## X46   5369.73246  1148.32171          NA  1313.44599
 ## X47   7384.83022  3935.30012  2370.02527  1115.75006
 ## X55     15.11764    15.68074    14.23333    14.03018</code></pre>
 <p>Filter using phenotypic (samples) variables</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(group <span class="op">==</span><span class="st"> "A"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span>exprs <span class="op">%&gt;%</span>
-<span class="st">    </span>head</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">group</span> <span class="kw">==</span> <span class="st">"A"</span>) <span class="kw">%&gt;%</span>
+    <span class="no">exprs</span> <span class="kw">%&gt;%</span>
+    <span class="no">head</span></pre></body></html></div>
 <pre><code>##     iTRAQ4.114 iTRAQ4.115
 ## X1   1347.6158  2247.3097
 ## X10   739.9861   799.3501
@@ -342,10 +345,10 @@ msnset <span class="op">%&gt;%</span>
 ## X13 26143.7542 29677.4781
 ## X14  6448.0829  6234.1957</code></pre>
 <p>Filter on both feature and sample variables</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(group <span class="op">==</span><span class="st"> "A"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(ProteinAccession <span class="op">==</span><span class="st"> "ENO"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span>exprs</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">group</span> <span class="kw">==</span> <span class="st">"A"</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">ProteinAccession</span> <span class="kw">==</span> <span class="st">"ENO"</span>) <span class="kw">%&gt;%</span>
+    <span class="no">exprs</span></pre></body></html></div>
 <pre><code>##       iTRAQ4.114  iTRAQ4.115
 ## X27 147093.25030 94770.28613
 ## X46   5369.73246  1148.32171
@@ -356,9 +359,9 @@ msnset <span class="op">%&gt;%</span>
 <h2 class="hasAnchor">
 <a href="#group-by-one-or-more-feature-or-sample-variables" class="anchor"></a>Group by one or more feature or sample variables</h2>
 <p>Group by features</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span>
-<span class="st">    </span>show</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu">group_by</span>(<span class="no">ProteinAccession</span>) <span class="kw">%&gt;%</span>
+    <span class="no">show</span></pre></body></html></div>
 <pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
 ## assayData: 55 features, 4 samples 
 ##   element names: exprs 
@@ -369,8 +372,7 @@ msnset <span class="op">%&gt;%</span>
 ##   varMetadata: labelDescription
 ## featureData
 ##   featureNames: X1 X10 ... X9 (55 total)
-##   fvarLabels: spectrum ProteinAccession ... collision.energy (15
-##     total)
+##   fvarLabels: spectrum ProteinAccession ... collision.energy (15 total)
 ##   fvarMetadata: labelDescription
 ## experimentData: use 'experimentData(object)'
 ## Annotation: No annotation 
@@ -382,9 +384,9 @@ msnset <span class="op">%&gt;%</span>
 ##   features  ProteinAccession [ 40 ]
 ##   samples    [ 0 ]</code></pre>
 <p>Group by samples</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
-<span class="st">    </span>show</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu">group_by</span>(<span class="no">group</span>) <span class="kw">%&gt;%</span>
+    <span class="no">show</span></pre></body></html></div>
 <pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
 ## assayData: 55 features, 4 samples 
 ##   element names: exprs 
@@ -395,8 +397,7 @@ msnset <span class="op">%&gt;%</span>
 ##   varMetadata: labelDescription
 ## featureData
 ##   featureNames: X1 X10 ... X9 (55 total)
-##   fvarLabels: spectrum ProteinAccession ... collision.energy (15
-##     total)
+##   fvarLabels: spectrum ProteinAccession ... collision.energy (15 total)
 ##   fvarMetadata: labelDescription
 ## experimentData: use 'experimentData(object)'
 ## Annotation: No annotation 
@@ -408,10 +409,10 @@ msnset <span class="op">%&gt;%</span>
 ##   features   [ 0 ]
 ##   samples   group [ 2 ]</code></pre>
 <p>Group by features and samples</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
-<span class="st">    </span>show</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu">group_by</span>(<span class="no">ProteinAccession</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">group_by</span>(<span class="no">group</span>) <span class="kw">%&gt;%</span>
+    <span class="no">show</span></pre></body></html></div>
 <pre><code>## Grouped_eSet (storageMode: lockedEnvironment)
 ## assayData: 55 features, 4 samples 
 ##   element names: exprs 
@@ -422,8 +423,7 @@ msnset <span class="op">%&gt;%</span>
 ##   varMetadata: labelDescription
 ## featureData
 ##   featureNames: X1 X10 ... X9 (55 total)
-##   fvarLabels: spectrum ProteinAccession ... collision.energy (15
-##     total)
+##   fvarLabels: spectrum ProteinAccession ... collision.energy (15 total)
 ##   fvarMetadata: labelDescription
 ## experimentData: use 'experimentData(object)'
 ## Annotation: No annotation 
@@ -439,17 +439,17 @@ msnset <span class="op">%&gt;%</span>
 <h2 class="hasAnchor">
 <a href="#summarise-the-expression-values-of-a-dataset" class="anchor"></a>Summarise the expression values of a dataset</h2>
 <p>Grouping and summarising by features</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(charge) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/median">median</a></span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
-<span class="st">    </span>exprs</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu">group_by</span>(<span class="no">charge</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">summarise</span>(<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span>(<span class="no">exprs</span>, <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)) <span class="kw">%&gt;%</span>
+    <span class="no">exprs</span></pre></body></html></div>
 <pre><code>##   iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
 ## 2  6916.4565   6099.295   6436.630   7715.448
 ## 3   982.4017   1119.316   1048.691   1175.080</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(ProteinAccession) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/median">median</a></span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
-<span class="st">    </span>exprs <span class="op">%&gt;%</span>
-<span class="st">    </span>head</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span> <span class="fu">group_by</span>(<span class="no">ProteinAccession</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">summarise</span>(<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span>(<span class="no">exprs</span>, <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)) <span class="kw">%&gt;%</span>
+    <span class="no">exprs</span> <span class="kw">%&gt;%</span>
+    <span class="no">head</span></pre></body></html></div>
 <pre><code>##         iTRAQ4.114 iTRAQ4.115 iTRAQ4.116 iTRAQ4.117
 ## BSA       1347.616   2247.310   3927.693  7661.1463
 ## ECA0172  17593.548  18545.620  19361.837 18328.2365
@@ -458,10 +458,10 @@ msnset <span class="op">%&gt;%</span>
 ## ECA0469   1069.945   1035.689   1029.420   999.6957
 ## ECA0621   1101.062   1124.167   1140.093  1191.8055</code></pre>
 <p>Grouping and summarising by samples</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
-<span class="st">    </span>exprs <span class="op">%&gt;%</span>
-<span class="st">    </span>head</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span> <span class="fu">group_by</span>(<span class="no">group</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">summarise</span>(<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">exprs</span>, <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)) <span class="kw">%&gt;%</span>
+    <span class="no">exprs</span> <span class="kw">%&gt;%</span>
+    <span class="no">head</span></pre></body></html></div>
 <pre><code>##              A          B
 ## X1   1797.4628  5794.4197
 ## X10   769.6681   826.6388
@@ -470,33 +470,33 @@ msnset <span class="op">%&gt;%</span>
 ## X13 27910.6161 28495.8100
 ## X14  6341.1393  6670.0603</code></pre>
 <p>Grouping by features and samples</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(charge) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(exprs)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">max</a></span>(exprs, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span>
-<span class="st">    </span>exprs</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu">group_by</span>(<span class="no">charge</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">summarise</span>(<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">exprs</span>)) <span class="kw">%&gt;%</span>
+    <span class="fu">group_by</span>(<span class="no">group</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">summarise</span>(<span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(<span class="no">exprs</span>, <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)) <span class="kw">%&gt;%</span>
+    <span class="no">exprs</span></pre></body></html></div>
 <pre><code>##          A         B
 ## 2 13880.38 12660.236
 ## 3  1477.78  1346.071</code></pre>
 <p>In the following example, we show how <code>dplyr</code> and <code>MSnbase</code> (here we using <code>filterNA</code>, <code>combineFeatures</code> and <code>normalise</code>) functions oberate seamlessly and can be mixed and matched with in chain of operations:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msnset <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/MSnbase/topics/MSnSet-class">filterNA</a></span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/MSnbase/topics/combineFeatures">combineFeatures</a></span>(<span class="dt">method =</span> <span class="st">"median"</span>, <span class="dt">fcol =</span> <span class="st">"ProteinAccession"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(group) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(exprs)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/MSnbase/topics/normalise-methods">normalise</a></span>(<span class="dt">method =</span> <span class="st">"quantiles"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(ProteinAccession <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">'ENO'</span>, <span class="st">'BSA'</span>)) <span class="op">%&gt;%</span>
-<span class="st">    </span>exprs</code></pre></div>
-<pre><code>##             A         B
-## BSA  1462.295  4355.662
-## ENO 41383.731 11272.133</code></pre>
+<div class="sourceCode"><html><body><pre class="r"><span class="no">msnset</span> <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/MSnbase/man/MSnSet-class.html">filterNA</a></span>() <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/MSnbase/man/combineFeatures.html">combineFeatures</a></span>(<span class="kw">method</span> <span class="kw">=</span> <span class="st">"median"</span>, <span class="kw">fcol</span> <span class="kw">=</span> <span class="st">"ProteinAccession"</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">group_by</span>(<span class="no">group</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">summarise</span>(<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">exprs</span>)) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/MSnbase/man/normalise-methods.html">normalise</a></span>(<span class="kw">method</span> <span class="kw">=</span> <span class="st">"quantiles"</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">ProteinAccession</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'ENO'</span>, <span class="st">'BSA'</span>)) <span class="kw">%&gt;%</span>
+    <span class="no">exprs</span></pre></body></html></div>
+<pre><code>##            A        B
+## BSA 1770.175 5727.242
+## ENO 5727.242 1770.175</code></pre>
 <p>In this last example, we use <code>as_tibble</code> and pipe the mutated data directly into <code>ggplot2</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"ggplot2"</span>)
-msnset <span class="op">%&gt;%</span><span class="st"> </span>as_tibble <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">rt =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cut">cut</a></span>(retention.time, <span class="dv">7</span>)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> sample, <span class="dt">y =</span> exprs)) <span class="op">+</span>
-<span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span>() <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span>(charge <span class="op">~</span><span class="st"> </span>rt)</code></pre></div>
+<div class="sourceCode"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"ggplot2"</span>)
+<span class="no">msnset</span> <span class="kw">%&gt;%</span> <span class="no">as_tibble</span> <span class="kw">%&gt;%</span>
+    <span class="fu">mutate</span>(<span class="kw">rt</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span>(<span class="no">retention.time</span>, <span class="fl">7</span>)) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">sample</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">exprs</span>)) +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span>() + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span>(<span class="no">charge</span> ~ <span class="no">rt</span>)</pre></body></html></div>
 <pre><code>## Warning: Removed 1 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="tidies_files/figure-html/ggplot-1.png" width="700"></p>
 </div>
@@ -509,37 +509,18 @@ msnset <span class="op">%&gt;%</span><span class="st"> </span>as_tibble <span cl
 <div class="figure">
 <img src="conflicts.png" alt="Bioconductor and tidyverse conflicts"><p class="caption">Bioconductor and tidyverse conflicts</p>
 </div>
-<p>The <code>combine</code> function, for example, is defined as a generic with signature <code>combine(x, y, ...)</code> in <em><a href="https://bioconductor.org/packages/3.8/BiocGenerics">BiocGenerics</a></em>, while it is <code>combine(...)</code> in <em><a href="https://CRAN.R-project.org/package=dplyr">dplyr</a></em>.</p>
+<p>The <code>combine</code> function, for example, is defined as a generic with signature <code>combine(x, y, ...)</code> in <em><a href="https://bioconductor.org/packages/3.11/BiocGenerics">BiocGenerics</a></em>, while it is <code>combine(...)</code> in <em><a href="https://CRAN.R-project.org/package=dplyr">dplyr</a></em>.</p>
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li>
-<a href="#introduction">Introduction</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#high-throughput-data-and-the-eset-class">High throughput data and the <code>eSet</code> class</a></li>
-      <li><a href="#tidy-tools">Tidy tools</a></li>
-      <li><a href="#the-tidies-package">The <code>tidies</code> package</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#using-tidies">Using <code>tidies</code></a><ul class="nav nav-pills nav-stacked">
-<li><a href="#select-feature-or-sample-variables">Select feature or sample variables</a></li>
-      <li><a href="#order-data-by-it-feature-of-sample-variables">Order data by it feature of sample variables</a></li>
-      <li><a href="#return-features-and-samples-with-matching-conditions">Return features and samples with matching conditions</a></li>
-      <li><a href="#group-by-one-or-more-feature-or-sample-variables">Group by one or more feature or sample variables</a></li>
-      <li><a href="#summarise-the-expression-values-of-a-dataset">Summarise the expression values of a dataset</a></li>
-      </ul>
-</li>
-      <li><a href="#future-work">Future work</a></li>
-      </ul>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
 </div>
-      </div>
 
 </div>
+
 
 
       <footer><div class="copyright">
@@ -547,12 +528,14 @@ msnset <span class="op">%&gt;%</span><span class="st"> </span>as_tibble <span cl
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
