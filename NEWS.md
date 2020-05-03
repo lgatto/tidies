@@ -1,6 +1,6 @@
 # tidies 0.1
 
-## Changes in version 0.0.4
+## Changes in version 0.1.0
 - Fix to accomodate changes in `dplyr` <2020-05-03 Sun>
 
 ## Changes in version 0.0.3
